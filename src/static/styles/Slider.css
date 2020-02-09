@@ -1,0 +1,62 @@
+.SlideContainer {
+}
+.Slide {
+  max-height: 100vh;
+  overflow: hidden;
+}
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: scale(110%);
+  }
+  to {
+    opacity: 1;
+    transform: scale(100%);
+  }
+}
+@keyframes slideOut {
+  from {
+    opacity: 1;
+    transform: scale(100%);
+  }
+  to {
+    opacity: 0;
+    transform: scale(110%);
+  }
+}
+.Slide a {
+  position: relative;
+  text-decoration: none;
+  display: block;
+  max-height: 100%;
+  overflow: hidden;
+  top: 2px;
+  z-index: 100;
+}
+.Slide div {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 70%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  text-transform: uppercase;
+}
+.Slide div span:nth-child(1) {
+  font-size: 85px;
+  font-weight: 900;
+  color: rgba(0, 0, 0, 0);
+  -webkit-text-stroke: 1.4px rgba(255, 255, 255, 0.8);
+  transition: all 0.7s ease;
+}
+.Slide div span:nth-child(1):hover {
+  color: rgba(255, 255, 255, 0.8);
+}
+.Slide div span:nth-child(2) {
+  font-size: 25px;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.8);
+}
