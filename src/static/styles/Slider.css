@@ -1,5 +1,3 @@
-.SlideContainer {
-}
 .Slide {
   max-height: 100vh;
   overflow: hidden;
@@ -24,11 +22,11 @@
     transform: scale(110%);
   }
 }
-.Slide a {
+.link {
   position: relative;
   text-decoration: none;
   display: block;
-  max-height: 100%;
+  height: 100vh;
   overflow: hidden;
   top: 2px;
   z-index: 100;
@@ -55,8 +53,14 @@
 .Slide div span:nth-child(1):hover {
   color: rgba(255, 255, 255, 0.8);
 }
+@media screen and (min-height: 950px) {
+  .Slide div span:nth-child(1) {
+    color: red;
+    -webkit-text-stroke: 1.4px rgb(0, 0, 0);
+  }
+}
 .Slide div span:nth-child(2) {
   font-size: 25px;
   font-weight: 900;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 0, 0, 1);
 }

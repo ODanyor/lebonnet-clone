@@ -1,0 +1,103 @@
+.BannerOne {
+  display: flex;
+}
+.LeftBan {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.LeftBan::after {
+  position: relative;
+  top: 0;
+  right: 0;
+  content: "";
+  width: 5%;
+  height: 100%;
+  background: #fff;
+  z-index: 20;
+}
+.CanvasContent {
+  background-image: url("../images/canvas.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 60%;
+  height: 60%;
+  text-align: center;
+  display: grid;
+  grid-template-rows: 2fr 1fr;
+  grid-template-areas: "hand" "content";
+}
+.CanvasContent img {
+  position: relative;
+  width: calc(100% + 50px);
+  top: 10%;
+  right: 50px;
+  filter: drop-shadow(-15px 15px 2px rgba(0, 0, 0, 0.18));
+  transform-origin: 100% 100%;
+  animation: handAnimation 1s infinite alternate ease-in;
+}
+@keyframes handAnimation {
+  from {
+    rotate: 10deg;
+  }
+  to {
+    rotate: 0;
+  }
+}
+.Content {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+}
+.LeftBan div span {
+  color: rgba(0, 0, 0, 0);
+  -webkit-text-stroke: 1.4px #fff;
+  font-size: 80px;
+  font-weight: 900;
+  text-transform: uppercase;
+  transition: all 1s ease;
+}
+.LeftBan div span:hover {
+  color: #fff;
+}
+.HandLink {
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 13px;
+}
+
+.RightBan {
+  position: relative;
+  width: 50%;
+  overflow: hidden;
+}
+
+.BabyContent {
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 100%;
+}
+.BabyContent span {
+  font-size: 80px;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0);
+  -webkit-text-stroke: 1.4px rgb(255, 0, 0);
+  transition: all 1s ease;
+}
+.BabyContent span:hover {
+  color: rgb(255, 0, 0);
+}
+.BabyLink {
+  text-decoration: none;
+  text-transform: uppercase;
+  color: rgb(255, 0, 0);
+  font-size: 13px;
+}

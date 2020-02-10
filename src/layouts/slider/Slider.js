@@ -44,7 +44,7 @@ function Slider() {
   return (
     <div className="SlideContainer">
       <div className="Slide">
-        <Link to="/">
+        <Link className="link" to="/">
           <img
             id="img"
             className="SlideIn"
