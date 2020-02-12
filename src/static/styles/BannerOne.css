@@ -35,7 +35,7 @@
   right: 50px;
   filter: drop-shadow(-15px 15px 2px rgba(0, 0, 0, 0.18));
   transform-origin: 100% 100%;
-  animation: handAnimation 1s infinite alternate ease-in;
+  animation: handAnimation 1s infinite alternate ease-in-out;
 }
 @keyframes handAnimation {
   from {

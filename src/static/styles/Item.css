@@ -1,0 +1,35 @@
+.Item {
+  padding-bottom: 0;
+  border: none;
+  min-width: 250px;
+  width: calc(25% - 50px);
+  margin: 0 25px 40px;
+  max-height: 100vh;
+  overflow: hidden;
+}
+.PictureContainer {
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s;
+  bottom: 0;
+  top: auto;
+  background: #f2f1ec;
+}
+.PictureContainer:hover .Main {
+  opacity: 0;
+}
+.PictureContainer:hover .Hover {
+  opacity: 1;
+}
+.Main {
+  transition: all 0.4s ease;
+  position: absolute;
+}
+.Hover {
+  transition: all 0.4s ease;
+  opacity: 0;
+}
+.ItemsContent {
+  margin-top: 2rem;
+  text-align: center;
+}

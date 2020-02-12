@@ -16,12 +16,32 @@ function Navbar() {
         <div></div>
       </div>
       <div className="Header">
-        <div>
+        <div className="NavContainer">
           <ul>
-            <li>Beanies</li>
-            <li>Scarves</li>
-            <li>Gloves</li>
-            <li>Exclusives</li>
+            <li>
+              <Link className="NavLink" to="/products">
+                Beanies
+              </Link>
+              <div className="UnderLine"></div>
+            </li>
+            <li>
+              <Link className="NavLink" to="/products">
+                Scarves
+              </Link>
+              <div className="UnderLine"></div>
+            </li>
+            <li>
+              <Link className="NavLink" to="/products">
+                Gloves
+              </Link>
+              <div className="UnderLine"></div>
+            </li>
+            <li>
+              <Link className="NavLink" to="/products">
+                Exclusives
+              </Link>
+              <div className="UnderLine"></div>
+            </li>
           </ul>
         </div>
         <Link to="/">
@@ -30,7 +50,12 @@ function Navbar() {
         <div>
           <ul>
             <li>Our world</li>
-            <li>Account</li>
+            <li>
+              <Link className="NavLink" to="/account">
+                Account
+              </Link>
+              <div className="UnderLine"></div>
+            </li>
             <li>Cart(0)</li>
           </ul>
         </div>

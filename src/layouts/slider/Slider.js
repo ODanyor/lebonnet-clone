@@ -29,10 +29,10 @@ function Slider() {
     return () => clearInterval(interval);
   }, []);
 
-  if (seconds === 5) {
+  if (seconds === 4) {
     document.querySelector("#img").style.animation = "slideOut 1.3s ease";
   }
-  if (seconds === 6) {
+  if (seconds === 5) {
     document.querySelector("#img").style.animation = "slideIn 1.3s ease";
     reset();
     setCounter(counter => counter + 1);

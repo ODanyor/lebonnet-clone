@@ -5,6 +5,8 @@ import "./App.css";
 import Navbar from "./layouts/navbar/Navbar";
 // Pages
 import HomePage from "./pages/HomePage";
+import AccountPage from "./pages/AccountPage";
+import ProductsPage from "./pages/ProductsPage";
 
 function App() {
   return (
@@ -13,6 +15,8 @@ function App() {
         <Navbar />
         <Switch>
           <Route exact path="/" component={HomePage} />
+          <Route exact path="/account" component={AccountPage} />
+          <Route exact path="/products" component={ProductsPage} />
         </Switch>
       </Router>
     </div>

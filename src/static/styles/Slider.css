@@ -53,7 +53,7 @@
 .Slide div span:nth-child(1):hover {
   color: rgba(255, 255, 255, 0.8);
 }
-@media screen and (min-height: 950px) {
+@media screen and (max-width: 1100px) {
   .Slide div span:nth-child(1) {
     color: red;
     -webkit-text-stroke: 1.4px rgb(0, 0, 0);
