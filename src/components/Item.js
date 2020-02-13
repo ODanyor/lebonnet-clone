@@ -2,28 +2,28 @@ import React from "react";
 import "../static/styles/Item.css";
 
 function Item(props) {
-  const item = props.item;
+  const product = props.product;
   return (
     <div className="Item">
       <div className="PictureContainer">
         <img
           className="Main"
-          src={item.photos.itemMain}
+          src={product.photo_1}
           alt="Main"
           width="100%"
           height="auto"
         />
         <img
           className="Hover"
-          src={item.photos.itemHover}
+          src={product.photo_2}
           alt="Hover"
           width="100%"
           height="auto"
         />
       </div>
       <div className="ItemsContent">
-        <div>{item.name}</div>
-        <div>€{item.price}</div>
+        <div>{product.name}</div>
+        <div>€{product.price}</div>
       </div>
     </div>
   );

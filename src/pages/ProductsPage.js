@@ -1,22 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../static/styles/ProductsPage.css";
 // Components
 import Item from "../components/Item";
-// Item
-const itemMain = require("../static/images/product/ACID_YELLOW.png");
-const itemHover = require("../static/images/product/ACID_YELLOW_1.jpg");
-const itemDetail = require("../static/images/product/ACID_YELLOW_DETAIL.jpg");
+// Redux
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { getProducts } from "../redux/actions/productActions";
 
-function ProductsPage() {
-  const item = {
-    photos: {
-      itemMain,
-      itemHover,
-      itemDetail
-    },
-    name: "Beanie - Acid yellow",
-    price: "60.00"
-  };
+function ProductsPage(props) {
+  useEffect(() => {
+    props.getProducts();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  console.log(props.products);
   return (
     <div>
       <div className="ProductsContainer">
@@ -30,11 +26,11 @@ function ProductsPage() {
           <div>
             <h2 className="Title">Beanies</h2>
             <div className="ItemsContainer">
-              <Item item={item} />
-              <Item item={item} />
-              <Item item={item} />
-              <Item item={item} />
-              <Item item={item} />
+              {props.products.map(product => {
+                if (product.product.category === "beanies") {
+                  return <Item key={product.id} product={product.product} />;
+                } else return null;
+              })}
             </div>
           </div>
           <div>
@@ -52,4 +48,17 @@ function ProductsPage() {
   );
 }
 
-export default ProductsPage;
+ProductsPage.propTypes = {
+  getProducts: PropTypes.func.isRequired,
+  products: PropTypes.array.isRequired
+};
+
+const mapDispatchToProps = dispatch => ({
+  getProducts: () => dispatch(getProducts())
+});
+
+const mapStateToProps = state => ({
+  products: state.products.products
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductsPage);
