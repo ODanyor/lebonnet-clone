@@ -7,6 +7,7 @@ import Navbar from "./layouts/navbar/Navbar";
 import HomePage from "./pages/HomePage";
 import AccountPage from "./pages/AccountPage";
 import ProductsPage from "./pages/ProductsPage";
+import ProductPage from "./pages/ProductPage";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route exact path="/" component={HomePage} />
           <Route exact path="/account" component={AccountPage} />
           <Route exact path="/products" component={ProductsPage} />
+          <Route exact path={`/product`} component={ProductPage} />
         </Switch>
       </Router>
     </div>

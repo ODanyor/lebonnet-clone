@@ -1,0 +1,57 @@
+.ProductDetailContainer {
+  position: relative;
+  width: 100vw;
+  display: flex;
+  align-items: flex-start;
+}
+.ProductPhotos {
+  width: 60vw;
+  position: relative;
+  background-color: #f2f1ec;
+}
+.SubPhotoContainer {
+  width: 100%;
+  position: relative;
+  align-items: flex-start;
+  pointer-events: auto;
+  padding-top: 100px;
+  min-height: 100vh;
+}
+.MainPhotoContainer {
+  position: relative;
+  width: 65%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.ProductDetail {
+  width: 40vw;
+  padding: 140px 50px 20px;
+  position: sticky;
+  top: 0;
+}
+.PrimaryInfo span {
+  text-transform: uppercase;
+  font-size: 60px;
+  font-weight: 900;
+  color: rgba(0, 0, 0, 0);
+  -webkit-text-stroke: 1px red;
+}
+.Price {
+  font-size: 25px;
+  font-weight: 100;
+}
+.Description {
+  padding: 20px 0;
+  font-style: italic;
+  font-weight: 700;
+  line-height: 1.7rem;
+}
+.SecondaryInfo h3 {
+  text-transform: uppercase;
+  padding: 20px 0;
+}
+.SecondaryInfo ul {
+  list-style: none;
+  font-size: 11px;
+  line-height: 1.7rem;
+}

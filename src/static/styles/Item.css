@@ -33,3 +33,12 @@
   margin-top: 2rem;
   text-align: center;
 }
+.ItemsContent div:nth-child(1) {
+  font-size: 13px;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+.ItemsContent div:nth-child(2) {
+  font-size: 12px;
+  font-weight: 100;
+}

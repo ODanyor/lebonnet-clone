@@ -12,7 +12,7 @@ function ProductsPage(props) {
     props.getProducts();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  console.log(props.products);
+  window.scrollTo(0, 0);
   return (
     <div>
       <div className="ProductsContainer">
@@ -35,6 +35,13 @@ function ProductsPage(props) {
           </div>
           <div>
             <h2 className="Title">Scarves</h2>
+            <div className="ItemsContainer">
+              {props.products.map(product => {
+                if (product.product.category === "scarves") {
+                  return <Item key={product.id} product={product.product} />;
+                } else return null;
+              })}
+            </div>
           </div>
           <div>
             <h2 className="Title">Gloves</h2>

@@ -1,4 +1,4 @@
-import { SET_ERRORS, LOADING_DATA, GET_PRODUCTS } from "../types";
+import { SET_ERRORS, LOADING_DATA, GET_PRODUCTS, SET_PRODUCT } from "../types";
 import axios from "axios";
 
 export const getProducts = () => dispatch => {
@@ -17,4 +17,11 @@ export const getProducts = () => dispatch => {
         payload: err
       });
     });
+};
+export const setProduct = product => dispatch => {
+  dispatch({ type: LOADING_DATA });
+  dispatch({
+    type: SET_PRODUCT,
+    payload: product
+  });
 };
