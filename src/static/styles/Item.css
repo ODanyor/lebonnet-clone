@@ -15,6 +15,30 @@
   top: auto;
   background: #f2f1ec;
 }
+.AddToCartButton {
+  position: absolute;
+  bottom: 0;
+  height: 40px;
+  width: 100%;
+  background-color: #fff;
+  border: 1px solid red;
+  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: 900;
+  color: red;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s ease;
+  opacity: 0;
+}
+.AddToCartButton:hover {
+  background-color: red;
+  color: #fff;
+}
+.PictureContainer:hover .AddToCartButton {
+  opacity: 1;
+}
 .PictureContainer:hover .Main {
   opacity: 0;
 }

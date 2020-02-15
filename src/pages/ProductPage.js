@@ -1,12 +1,25 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../static/styles/ProductPage.css";
 // Redux
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
 function ProductPage(props) {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const product = props.product;
-  window.scrollTo(0, 0);
+  const [count, setCount] = useState(1);
+  const increment = () => {
+    if (count < 20) {
+      setCount(prevState => prevState + 1);
+    }
+  };
+  const decrement = () => {
+    if (count > 1) {
+      setCount(prevState => prevState - 1);
+    }
+  };
   return (
     <div>
       <div className="Notification"></div>
@@ -37,10 +50,18 @@ function ProductPage(props) {
         <div className="ProductDetail">
           <div className="PrimaryInfo">
             <span>{product.name ? product.name.split("-")[0] : null}</span>
+            <div>{product.name}</div>
             <div className="Price">€{product.price}.00</div>
             <div className="Description">{product.description}</div>
           </div>
-          <div></div>
+          <div className="OrderContainer">
+            <div className="Quantity">
+              <button onClick={decrement}>-</button>
+              <div>{count}</div>
+              <button onClick={increment}>+</button>
+            </div>
+            <div className="Add">Add to cart €{product.price}.00</div>
+          </div>
           <div className="SecondaryInfo">
             <h3>Product info</h3>
             <ul>

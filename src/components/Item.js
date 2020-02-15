@@ -30,6 +30,7 @@ function Item(props) {
             height="auto"
           />
         </Link>
+        <div className="AddToCartButton">Add to cart €{product.price}.00</div>
       </div>
       <div className="ItemsContent">
         <div>{product.name}</div>

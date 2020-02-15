@@ -55,7 +55,7 @@ function Slider() {
           />
           <div>
             <span className="Span">{slides[counter].topic}</span>
-            <span className="Span">We got you covered -></span>
+            <span className="Span">We got you covered &rarr;</span>
           </div>
         </Link>
       </div>
