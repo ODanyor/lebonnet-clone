@@ -33,7 +33,7 @@ function Slider() {
     document.querySelector("#img").style.animation = "slideOut 1.3s ease";
   }
   if (seconds === 5) {
-    document.querySelector("#img").style.animation = "slideIn 1.3s ease";
+    document.querySelector("#img").style.animation = "slideIn 1s ease";
     reset();
     setCounter(counter => counter + 1);
     if (counter === slides.length - 1) {

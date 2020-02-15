@@ -26,7 +26,7 @@
   position: relative;
   text-decoration: none;
   display: block;
-  height: 100vh;
+  max-height: 100vh;
   overflow: hidden;
   top: 2px;
   z-index: 100;

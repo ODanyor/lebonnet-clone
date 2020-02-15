@@ -1,0 +1,74 @@
+.PrimaryFooter {
+  position: relative;
+  width: 100%;
+  background-color: #f2f1ec;
+  text-align: center;
+  padding: 35px;
+  display: flex;
+}
+.LeftSide {
+  width: 100%;
+}
+.RightSide {
+  width: 100%;
+}
+.SubSides {
+  max-width: 400px;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.EmailForm {
+  margin: 20px 0;
+  padding: 5px;
+  border: 1.3px solid #000;
+  display: flex;
+}
+.EmailForm input {
+  width: 70%;
+  background-color: rgba(0, 0, 0, 0);
+  font-size: 12px;
+  padding: 5px;
+  border: none;
+}
+.EmailForm button {
+  cursor: pointer;
+  width: 40%;
+  height: 40px;
+  border: none;
+  font-size: 15px;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: #fff;
+  background-color: #000;
+}
+.SubTitle {
+  padding: 20px 0;
+  font-size: 13px;
+  line-height: 1.7rem;
+}
+.FooterTitles {
+  font-size: 23px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+.SecondaryFooter {
+  padding: 50px;
+  display: flex;
+  justify-content: space-around;
+}
+.SubTitles {
+  text-transform: uppercase;
+  font-size: 19px;
+  font-weight: 900;
+  padding: 20px 0;
+}
+.SecondaryFooter ul {
+  list-style: none;
+  text-transform: uppercase;
+  font-size: 9px;
+  line-height: 1.7rem;
+}
+.SecondaryFooter ul li {
+  cursor: pointer;
+}

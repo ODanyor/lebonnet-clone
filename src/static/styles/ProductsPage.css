@@ -3,7 +3,7 @@
 }
 .ProductsContainer nav {
   transform: translate(49px, 156px) rotate(90deg);
-  width: auto;
+  width: 400px;
   display: flex;
   align-items: center;
   position: -webkit-sticky;
@@ -14,6 +14,7 @@
 
   text-transform: uppercase;
   font-size: 13px;
+  z-index: 900;
 }
 .ProductsContainer nav div {
   cursor: pointer;

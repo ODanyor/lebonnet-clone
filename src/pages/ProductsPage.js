@@ -10,9 +10,9 @@ import { getProducts } from "../redux/actions/productActions";
 function ProductsPage(props) {
   useEffect(() => {
     props.getProducts();
+    window.scrollTo(0, 0);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  window.scrollTo(0, 0);
   return (
     <div>
       <div className="ProductsContainer">
