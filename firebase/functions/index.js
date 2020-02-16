@@ -10,9 +10,20 @@ app.use(cors());
 // app.get("/fix", fix);
 
 const { fbAuth } = require("./utils/fbAuth");
-const { signUp, signIn } = require("./handlers/users");
+const {
+  signUp,
+  signIn,
+  getCart,
+  addToCart,
+  updateProduct,
+  removeProduct
+} = require("./handlers/users");
 app.post("/users/signUp", signUp);
 app.post("/users/signIn", signIn);
+app.get("/users/cart", fbAuth, getCart);
+app.post("/users/cart", fbAuth, addToCart);
+app.post("/users/cart/:productId", fbAuth, updateProduct);
+app.delete("/users/cart/:productId", fbAuth, removeProduct);
 
 const {
   getProducts,

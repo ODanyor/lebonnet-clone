@@ -1,4 +1,4 @@
-const { db } = require("../utils/admin");
+const { db, FieldValue } = require("../utils/admin");
 const firebase = require("firebase");
 
 const { firebaseConfig } = require("../config/firebaseConfig");
@@ -96,5 +96,74 @@ exports.signIn = (req, res) => {
           .json({ error: "Wrong user credentials, please try again." });
       }
       return res.status(400).json({ error: err.code });
+    });
+};
+
+// @route: /users/cart
+// @desc: Get a personal cart
+// @access: Private
+exports.getCart = (req, res) => {
+  db.collection("carts")
+    .doc(req.user.email)
+    .get()
+    .then(cart => {
+      return res.status(200).json(cart.data());
+    })
+    .catch(err => {
+      return res.status(500).json({ error: err.code });
+    });
+};
+
+// @route: /users/cart
+// @desc: Add a product into the cart
+// @access: Private
+exports.addToCart = (req, res) => {
+  const product = {
+    id: req.body.id,
+    quantity: req.body.quantity
+  };
+  db.collection("carts")
+    .doc(req.user.email)
+    .update({ [product.id]: product.quantity })
+    .then(() => {
+      return res
+        .status(200)
+        .json({ message: `Product was added into the cart.` });
+    })
+    .catch(err => {
+      return res.status(500).json({ error: err.code });
+    });
+};
+
+// @route: /users/cart/:productId
+// @desc: Update a product in cart
+// @access: Private
+exports.updateProduct = (req, res) => {
+  const productId = req.params.productId;
+  const newQuantity = req.body.quantity;
+  db.collection("carts")
+    .doc(req.user.email)
+    .update({ [productId]: newQuantity })
+    .then(() => {
+      return res.status(200).json({ message: `Product was updated.` });
+    })
+    .catch(err => {
+      return res.status(500).json({ error: err.code });
+    });
+};
+
+// @route: /users/cart/:productId
+// @desc: Remove a product from cart
+// @access: Private
+exports.removeProduct = (req, res) => {
+  const productId = req.params.productId;
+  db.collection("carts")
+    .doc(req.user.email)
+    .update({ [productId]: FieldValue.delete() })
+    .then(() => {
+      return res.status(200).json({ message: `Product was deleted.` });
+    })
+    .catch(err => {
+      return res.status(500).json({ error: err.code });
     });
 };

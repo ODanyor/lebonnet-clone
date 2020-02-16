@@ -1,4 +1,3 @@
-let FieldValue = require("firebase-admin").firestore.FieldValue;
 const { db } = require("../utils/admin");
 
 exports.fix = (req, res) => {

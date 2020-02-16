@@ -21,15 +21,6 @@ exports.fbAuth = (req, res, next) => {
         .get()
         .then(data => {
           req.user.email = data.data().email;
-        })
-        .catch(err => {
-          return res.status(500).json({ error: err.code });
-        });
-      db.collection("carts")
-        .doc(req.user.email)
-        .get()
-        .then(data => {
-          req.user.cart = data.data();
           next();
         })
         .catch(err => {

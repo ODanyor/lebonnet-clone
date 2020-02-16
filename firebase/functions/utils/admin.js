@@ -1,5 +1,5 @@
 const admin = require("firebase-admin");
-
+const FieldValue = require("firebase-admin").firestore.FieldValue;
 const serviceAccount = require("../config/googleKey.json");
 
 admin.initializeApp({
@@ -11,4 +11,4 @@ admin.initializeApp({
 const db = admin.firestore();
 const storage = admin.storage();
 
-module.exports = { admin, db, storage };
+module.exports = { admin, db, storage, FieldValue };
