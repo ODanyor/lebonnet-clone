@@ -6,12 +6,14 @@ import logger from "redux-logger";
 
 // Reducers
 import productReducers from "./reducers/productReducers";
+import userReducers from "./reducers/userReducers";
 
 const initialState = {};
 const middleware = [thunk, logger];
 
 const rootReducers = combineReducers({
-  products: productReducers
+  products: productReducers,
+  user: userReducers
 });
 
 const composeEnhancers =

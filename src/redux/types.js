@@ -3,3 +3,8 @@ export const SET_ERRORS = "SET_ERRORS";
 
 export const GET_PRODUCTS = "GET_PRODUCTS";
 export const SET_PRODUCT = "SET_PRODUCT";
+
+export const LOADING_USER = "LOADING_USER";
+export const SET_AUTHENTICATED = "SET_AUTHENTICATED";
+export const SET_UNAUTHENTICATED = "SET_UNAUTHENTICATED";
+export const SET_MESSAGE = "SET_MESSAGE";
