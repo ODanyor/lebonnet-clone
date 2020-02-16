@@ -28,7 +28,13 @@ function ProductsPage(props) {
             <div className="ItemsContainer">
               {props.products.map(product => {
                 if (product.product.category === "beanies") {
-                  return <Item key={product.id} product={product.product} />;
+                  return (
+                    <Item
+                      key={product.id}
+                      productId={product.id}
+                      product={product.product}
+                    />
+                  );
                 } else return null;
               })}
             </div>
@@ -38,7 +44,13 @@ function ProductsPage(props) {
             <div className="ItemsContainer">
               {props.products.map(product => {
                 if (product.product.category === "scarves") {
-                  return <Item key={product.id} product={product.product} />;
+                  return (
+                    <Item
+                      key={product.id}
+                      productId={product.id}
+                      product={product.product}
+                    />
+                  );
                 } else return null;
               })}
             </div>

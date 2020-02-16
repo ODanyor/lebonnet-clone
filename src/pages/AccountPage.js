@@ -1,37 +1,41 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "../static/styles/AccountPage.css";
+// Layouts
+import SignInSide from "../layouts/account/SignInSide";
+import SignUpSide from "../layouts/account/SignUpSide";
+import Authenticated from "../layouts/account/Authenticated";
+// Redux
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
-function AccountPage() {
-  useEffect(() => {
+class AccountPage extends React.Component {
+  componentDidMount() {
     window.scrollTo(0, 0);
-  }, []);
-  return (
-    <div className="AccountContainer">
-      <div className="LoginSide">
-        <div className="Gradient">
-          <div className="FormContainer">
-            <form className="Form LogForm">
-              <div className="LoginTitle">Registered customers</div>
-              <input type="text" placeholder="Email" />
-              <input type="password" placeholder="Password" />
-              <button>Log in</button>
-            </form>
-          </div>
-        </div>
-      </div>
-      <div className="RegisterSide">
-        <div className="FormContainer">
-          <form className="Form RegForm">
-            <div className="RegisterTitle">New customers</div>
-            <input type="text" placeholder="Email" />
-            <input type="password" placeholder="Password" />
-            <input type="password" placeholder="Confirm password" />
-            <button>Create an account</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  );
+  }
+  render() {
+    return (
+      <>
+        {this.props.user.authenticated ? (
+          <Authenticated />
+        ) : (
+          <>
+            <div className="AccountContainer">
+              <SignInSide history={this.props.history} />
+              <SignUpSide history={this.props.history} />
+            </div>
+          </>
+        )}
+      </>
+    );
+  }
 }
 
-export default AccountPage;
+AccountPage.propTypes = {
+  user: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+  user: state.user
+});
+
+export default connect(mapStateToProps)(AccountPage);

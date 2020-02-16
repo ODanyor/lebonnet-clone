@@ -3,6 +3,7 @@ import "../static/styles/ProductPage.css";
 // Redux
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import { addToCart } from "../redux/actions/userActions";
 
 function ProductPage(props) {
   useEffect(() => {
@@ -19,6 +20,13 @@ function ProductPage(props) {
     if (count > 1) {
       setCount(prevState => prevState - 1);
     }
+  };
+  const addToCart = () => {
+    const item = {
+      id: product.productId,
+      quantity: count
+    };
+    props.addToCart(item);
   };
   return (
     <div>
@@ -60,7 +68,9 @@ function ProductPage(props) {
               <div>{count}</div>
               <button onClick={increment}>+</button>
             </div>
-            <div className="Add">Add to cart €{product.price}.00</div>
+            <div className="Add" onClick={addToCart}>
+              Add to cart €{product.price}.00
+            </div>
           </div>
           <div className="SecondaryInfo">
             <h3>Product info</h3>
@@ -78,11 +88,16 @@ function ProductPage(props) {
 }
 
 ProductPage.propTypes = {
-  product: PropTypes.object.isRequired
+  product: PropTypes.object.isRequired,
+  addToCart: PropTypes.func.isRequired
 };
+
+const mapDispatchToProps = dispatch => ({
+  addToCart: product => dispatch(addToCart(product))
+});
 
 const mapStateToProps = state => ({
   product: state.products.product
 });
 
-export default connect(mapStateToProps)(ProductPage);
+export default connect(mapStateToProps, mapDispatchToProps)(ProductPage);
