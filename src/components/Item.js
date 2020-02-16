@@ -1,13 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "../static/styles/Item.css";
 // Redux
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { setProduct } from "../redux/actions/productActions";
+import { addToCart } from "../redux/actions/userActions";
 
 function Item(props) {
-  const product = props.product;
+  const productId = props.productId;
+  // eslint-disable-next-line no-unused-vars
+  const [item, setItem] = useState({
+    id: productId,
+    quantity: 1
+  });
+  const addToCart = () => {
+    props.addToCart(item);
+  };
+  const product = { ...props.product, productId };
   const setProductInState = () => {
     props.setProduct(product);
   };
@@ -30,7 +40,9 @@ function Item(props) {
             height="auto"
           />
         </Link>
-        <div className="AddToCartButton">Add to cart €{product.price}.00</div>
+        <div className="AddToCartButton" onClick={addToCart}>
+          Add to cart €{product.price}.00
+        </div>
       </div>
       <div className="ItemsContent">
         <div>{product.name}</div>
@@ -45,7 +57,8 @@ Item.propTypes = {
 };
 
 const mapDispatchToProps = dispatch => ({
-  setProduct: product => dispatch(setProduct(product))
+  setProduct: product => dispatch(setProduct(product)),
+  addToCart: product => dispatch(addToCart(product))
 });
 
 const mapStateToProps = state => ({});
