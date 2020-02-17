@@ -8,7 +8,6 @@ import {
 const initialState = {
   loading: false,
   authenticated: false,
-  cart: [],
   message: {}
 };
 

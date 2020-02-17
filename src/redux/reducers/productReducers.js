@@ -1,10 +1,18 @@
-import { SET_ERRORS, LOADING_DATA, GET_PRODUCTS, SET_PRODUCT } from "../types";
+import {
+  SET_ERRORS,
+  LOADING_DATA,
+  GET_PRODUCTS,
+  SET_PRODUCT,
+  SET_CART,
+  DELETE_PRODUCT
+} from "../types";
 
 const initialState = {
   loading: false,
   products: [],
   errors: {},
-  product: {}
+  product: {},
+  cart: []
 };
 
 const productReducers = (state = initialState, action) => {
@@ -29,6 +37,18 @@ const productReducers = (state = initialState, action) => {
       return {
         ...state,
         product: action.payload,
+        loading: false
+      };
+    case DELETE_PRODUCT:
+      return {
+        ...state,
+        errors: action.payload,
+        loading: false
+      };
+    case SET_CART:
+      return {
+        ...state,
+        cart: action.payload,
         loading: false
       };
     default:
