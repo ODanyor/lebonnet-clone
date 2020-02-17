@@ -107,7 +107,15 @@ exports.getCart = (req, res) => {
     .doc(req.user.email)
     .get()
     .then(cart => {
-      return res.status(200).json(cart.data());
+      cart = cart.data();
+      let result = [];
+      for (let i in cart) {
+        result.push({
+          productId: i,
+          quantity: cart[i]
+        });
+      }
+      return res.status(200).json(result);
     })
     .catch(err => {
       return res.status(500).json({ error: err.code });
