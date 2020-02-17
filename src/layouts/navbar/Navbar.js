@@ -4,11 +4,18 @@ import "../../static/styles/Navbar.css";
 import logo from "../../static/images/logo.svg";
 // Layouts
 import Cart from "../cart/Cart";
+// Redux
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { getCart } from "../../redux/actions/productActions";
 
-function Navbar() {
+function Navbar(props) {
   const [open, setOpen] = useState(false);
   const toggle = () => {
     setOpen(!open);
+  };
+  const getCart = () => {
+    props.getCart();
   };
   return (
     <>
@@ -68,7 +75,7 @@ function Navbar() {
                 </Link>
                 <div className="UnderLine"></div>
               </li>
-              <li>
+              <li onClick={getCart}>
                 <div className="NavLink" onClick={toggle}>
                   Cart(0)
                 </div>
@@ -83,4 +90,14 @@ function Navbar() {
   );
 }
 
-export default Navbar;
+Navbar.propTypes = {
+  getCart: PropTypes.func.isRequired
+};
+
+const mapDispatchToProps = dispatch => ({
+  getCart: () => dispatch(getCart())
+});
+
+const mapStateToProps = state => ({});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar);

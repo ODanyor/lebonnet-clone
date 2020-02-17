@@ -1,5 +1,10 @@
 import React from "react";
 import "../../static/styles/Cart.css";
+// Components
+import CartItem from "../../components/CartItem";
+// Redux
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
 function Cart(props) {
   let style = "CartContainer CartClose";
@@ -8,6 +13,24 @@ function Cart(props) {
     style = "CartContainer CartOpen";
     back = "Background";
   }
+
+  let products = props.products;
+  let items = [];
+  props.cart.forEach(element => {
+    products.map(product => {
+      if (element.productId === product.id) {
+        items.push({
+          photo_1: product.product.photo_1,
+          name: product.product.name,
+          price: product.product.price,
+          quantity: element.quantity,
+          productId: element.productId
+        });
+      }
+    });
+  });
+  console.log(items);
+
   return (
     <>
       <div className={style}>
@@ -20,7 +43,11 @@ function Cart(props) {
             </div>
           </div>
         </div>
-        <div className="CartItemsContainer">...</div>
+        <div className="CartItemsContainer">
+          {items.map(item => (
+            <CartItem key={item.productId} item={item} />
+          ))}
+        </div>
         <div className="CartFooter">
           <div>Total</div>
           <div>€.00</div>
@@ -34,4 +61,13 @@ function Cart(props) {
   );
 }
 
-export default Cart;
+Cart.propTypes = {
+  cart: PropTypes.array.isRequired
+};
+
+const mapStateToProps = state => ({
+  products: state.products.products,
+  cart: state.products.cart
+});
+
+export default connect(mapStateToProps)(Cart);
