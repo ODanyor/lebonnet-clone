@@ -6,6 +6,11 @@
   padding: 35px;
   display: flex;
 }
+@media screen and (max-width: 1199px) {
+  .PrimaryFooter {
+    display: none;
+  }
+}
 .LeftSide {
   width: 100%;
 }
@@ -56,6 +61,11 @@
   padding: 50px;
   display: flex;
   justify-content: space-around;
+}
+@media screen and (max-width: 1199px) {
+  .SecondaryFooter {
+    display: none;
+  }
 }
 .SubTitles {
   text-transform: uppercase;

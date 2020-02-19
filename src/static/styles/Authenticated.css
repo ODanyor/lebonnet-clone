@@ -4,6 +4,16 @@
   display: flex;
   justify-content: center;
 }
+@media screen and (max-width: 1199px) {
+  .SubContainer {
+    flex-direction: column;
+  }
+}
+.LogoutButtonContainer {
+  position: absolute;
+  top: 150px;
+  right: 25px;
+}
 .SubContainer {
   max-width: 950px;
   margin: 0 auto 60px;

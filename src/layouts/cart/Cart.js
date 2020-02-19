@@ -2,37 +2,38 @@ import React from "react";
 import "../../static/styles/Cart.css";
 // Components
 import CartItem from "../../components/CartItem";
+import Background from "../../components/Background";
 // Redux
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
 function Cart(props) {
   let style = "CartContainer CartClose";
-  let back = "Background BackClose";
   if (props.open) {
     style = "CartContainer CartOpen";
-    back = "Background";
   }
 
   let products = props.products;
   let items = [];
   props.cart.forEach(element => {
+    // eslint-disable-next-line
     products.map(product => {
       if (element.productId === product.id) {
         items.push({
-          photo_1: product.product.photo_1,
-          name: product.product.name,
-          price: product.product.price,
-          quantity: element.quantity,
-          productId: element.productId
+          ...product,
+          quantity: element.quantity
         });
       }
     });
   });
-  console.log(items);
-
+  let total = 0;
+  // eslint-disable-next-line
+  items.map(item => {
+    total = total + item.quantity * item.product.price;
+  });
   return (
     <>
+      {props.open ? <Background trigger={props.trigger} /> : null}
       <div className={style}>
         <div className="CartHeader">
           <div>Cart</div>
@@ -45,18 +46,17 @@ function Cart(props) {
         </div>
         <div className="CartItemsContainer">
           {items.map(item => (
-            <CartItem key={item.productId} item={item} />
+            <CartItem key={item.id} item={item} />
           ))}
         </div>
         <div className="CartFooter">
           <div>Total</div>
-          <div>€.00</div>
+          <div>€{total}.00</div>
         </div>
         <div className="Continue">
           <button>Сontinue ordering</button>
         </div>
       </div>
-      <div className={back} onClick={props.trigger}></div>
     </>
   );
 }

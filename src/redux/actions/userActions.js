@@ -1,9 +1,4 @@
-import {
-  SET_ERRORS,
-  SET_AUTHENTICATED,
-  SET_UNAUTHENTICATED,
-  SET_MESSAGE
-} from "../types";
+import { SET_ERRORS, SET_AUTHENTICATED, SET_UNAUTHENTICATED } from "../types";
 import axios from "axios";
 import { getCart } from "./productActions";
 
@@ -38,22 +33,6 @@ export const signUp = (credentials, history) => dispatch => {
     })
     .then(() => {
       dispatch({ type: SET_AUTHENTICATED });
-    })
-    .catch(err => {
-      dispatch({
-        type: SET_ERRORS,
-        payload: err.response.data
-      });
-    });
-};
-export const addToCart = product => dispatch => {
-  axios
-    .post("/users/cart", product)
-    .then(res => {
-      dispatch({
-        type: SET_MESSAGE,
-        payload: res.data
-      });
     })
     .catch(err => {
       dispatch({

@@ -7,6 +7,13 @@
   max-height: 100vh;
   overflow: hidden;
 }
+@media screen and (max-width: 700px) {
+  .Item {
+    min-width: auto;
+    width: auto;
+    margin: 0 5px 20px;
+  }
+}
 .PictureContainer {
   cursor: pointer;
   position: relative;

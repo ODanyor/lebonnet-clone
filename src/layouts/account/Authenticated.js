@@ -1,9 +1,14 @@
 import React from "react";
 import "../../static/styles/Authenticated.css";
+// Components
+import LogoutButton from "../../components/LogoutButton";
 
 function Authenticated() {
   return (
     <div className="MainContainer">
+      <div className="LogoutButtonContainer">
+        <LogoutButton />
+      </div>
       <div className="SubContainer">
         <div className="LeftContainer">
           <div>Welcome</div>

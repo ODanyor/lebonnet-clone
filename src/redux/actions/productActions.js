@@ -4,7 +4,7 @@ import {
   GET_PRODUCTS,
   SET_PRODUCT,
   SET_CART,
-  DELETE_PRODUCT
+  SET_MESSAGE
 } from "../types";
 import axios from "axios";
 
@@ -32,12 +32,37 @@ export const setProduct = product => dispatch => {
     payload: product
   });
 };
+export const addToCart = product => dispatch => {
+  axios
+    .post("/users/cart", product)
+    .then(res => {
+      dispatch({
+        type: SET_MESSAGE,
+        payload: res.data
+      });
+    })
+    .then(() => {
+      dispatch(getCart());
+    })
+    .catch(err => {
+      dispatch({
+        type: SET_ERRORS,
+        payload: err.response.data
+      });
+    });
+};
 export const deleteProduct = productId => dispatch => {
   dispatch({ type: LOADING_DATA });
   axios
     .delete(`/users/cart/${productId}`)
     .then(res => {
-      dispatch({ type: DELETE_PRODUCT, payload: res.data });
+      dispatch({
+        type: SET_MESSAGE,
+        payload: res.data
+      });
+    })
+    .then(() => {
+      dispatch(getCart());
     })
     .catch(err => {
       dispatch({

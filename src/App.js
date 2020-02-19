@@ -22,7 +22,7 @@ if (token) {
   const decodedToken = jwtDecode(token);
   if (decodedToken.exp * 1000 < Date.now()) {
     store.dispatch(logOut());
-    window.location.href = "/signIn";
+    window.location.href = "/account";
   } else {
     store.dispatch({ type: SET_AUTHENTICATED });
     axios.defaults.headers.common["Authorization"] = token;

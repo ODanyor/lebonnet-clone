@@ -3,14 +3,15 @@ import "../static/styles/ProductPage.css";
 // Redux
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { addToCart } from "../redux/actions/userActions";
+import { addToCart } from "../redux/actions/productActions";
 
 function ProductPage(props) {
   useEffect(() => {
     window.scrollTo(0, 0);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  const product = props.product;
   const [count, setCount] = useState(1);
+  const product = props.product;
   const increment = () => {
     if (count < 20) {
       setCount(prevState => prevState + 1);
@@ -65,7 +66,7 @@ function ProductPage(props) {
           <div className="OrderContainer">
             <div className="Quantity">
               <button onClick={decrement}>-</button>
-              <div>{count}</div>
+              <div>{product.quantity ? product.quantity : count}</div>
               <button onClick={increment}>+</button>
             </div>
             <div className="Add" onClick={addToCart}>
@@ -75,10 +76,10 @@ function ProductPage(props) {
           <div className="SecondaryInfo">
             <h3>Product info</h3>
             <ul>
-              <li>{product.fabric}</li>
-              <li>{product.fit}</li>
-              {product.size ? <li>{product.size}</li> : null}
-              <li>{product.treatment}</li>
+              <li>Fabric: {product.fabric}</li>
+              <li>Fit: {product.fit}</li>
+              {product.size ? <li>Size: {product.size}</li> : null}
+              <li>Treatment: {product.treatment}</li>
             </ul>
           </div>
         </div>

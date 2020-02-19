@@ -4,6 +4,11 @@
   display: flex;
   align-items: flex-start;
 }
+@media screen and (max-width: 1199px) {
+  .ProductDetailContainer {
+    flex-direction: column;
+  }
+}
 .ProductPhotos {
   width: 60vw;
   position: relative;
@@ -28,6 +33,12 @@
   padding: 140px 50px 20px;
   position: sticky;
   top: 0;
+}
+@media screen and (max-width: 1199px) {
+  .ProductDetail {
+    padding: 0 15px 50px;
+    width: 100vw;
+  }
 }
 .PrimaryInfo span {
   text-transform: uppercase;

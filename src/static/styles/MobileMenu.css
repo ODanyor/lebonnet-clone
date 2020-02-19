@@ -1,0 +1,29 @@
+.MobileMenu {
+  height: 250px;
+  width: 100%;
+  position: fixed;
+  bottom: 48px;
+  display: flex;
+  background-color: #fff;
+  transition: all 0.4s ease;
+  z-index: 960;
+}
+.open {
+  transform: translateY(0);
+}
+.hide {
+  transform: translateY(100%);
+}
+.MobileMenu ul {
+  width: 100%;
+  height: 100%;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 0 15px;
+  font-size: 14px;
+}
+.MobileMenu ul li {
+  cursor: pointer;
+}

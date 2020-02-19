@@ -5,7 +5,7 @@ import "../static/styles/Item.css";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { setProduct } from "../redux/actions/productActions";
-import { addToCart } from "../redux/actions/userActions";
+import { addToCart } from "../redux/actions/productActions";
 
 function Item(props) {
   const productId = props.productId;
