@@ -8,6 +8,11 @@
   transition: all 0.4s ease;
   z-index: 960;
 }
+@media screen and (min-width: 1200px) {
+  .MobileMenu {
+    display: none;
+  }
+}
 .open {
   transform: translateY(0);
 }

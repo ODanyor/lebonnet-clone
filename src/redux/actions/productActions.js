@@ -52,7 +52,6 @@ export const addToCart = product => dispatch => {
     });
 };
 export const deleteProduct = productId => dispatch => {
-  dispatch({ type: LOADING_DATA });
   axios
     .delete(`/users/cart/${productId}`)
     .then(res => {
@@ -72,7 +71,6 @@ export const deleteProduct = productId => dispatch => {
     });
 };
 export const getCart = () => dispatch => {
-  dispatch({ type: LOADING_DATA });
   axios
     .get("/users/cart")
     .then(res => {

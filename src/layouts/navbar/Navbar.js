@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "../../static/styles/Navbar.css";
 import logo from "../../static/images/logo.svg";
+// Components
+import Notification from "../../components/Notification";
 // Layouts
 import Cart from "../cart/Cart";
 import NavbarPC from "./NavbarPC";
@@ -16,6 +18,7 @@ function Navbar(props) {
   };
   return (
     <>
+      <Notification />
       <NavbarPC length={props.cart.length} trigger={toggle} logo={logo} />
       <NavbarMobile trigger={toggle} logo={logo} />
       <Cart open={open} trigger={toggle} />

@@ -8,7 +8,7 @@ import {
 const initialState = {
   loading: false,
   authenticated: false,
-  message: {}
+  message: ""
 };
 
 const userReducers = (state = initialState, action) => {

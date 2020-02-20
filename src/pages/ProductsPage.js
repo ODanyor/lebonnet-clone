@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import "../static/styles/ProductsPage.css";
 // Components
 import Item from "../components/Item";
+import Spinner from "../components/Spinner";
 // Redux
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
@@ -27,33 +28,41 @@ function ProductsPage(props) {
           <div>
             <h2 className="Title">Beanies</h2>
             <div className="ItemsContainer">
-              {props.products.map(product => {
-                if (product.product.category === "beanies") {
-                  return (
-                    <Item
-                      key={product.id}
-                      productId={product.id}
-                      product={product.product}
-                    />
-                  );
-                } else return null;
-              })}
+              {props.loading ? (
+                <Spinner />
+              ) : (
+                props.products.map(product => {
+                  if (product.product.category === "beanies") {
+                    return (
+                      <Item
+                        key={product.id}
+                        productId={product.id}
+                        product={product.product}
+                      />
+                    );
+                  } else return null;
+                })
+              )}
             </div>
           </div>
           <div>
             <h2 className="Title">Scarves</h2>
             <div className="ItemsContainer">
-              {props.products.map(product => {
-                if (product.product.category === "scarves") {
-                  return (
-                    <Item
-                      key={product.id}
-                      productId={product.id}
-                      product={product.product}
-                    />
-                  );
-                } else return null;
-              })}
+              {props.loading ? (
+                <Spinner />
+              ) : (
+                props.products.map(product => {
+                  if (product.product.category === "scarves") {
+                    return (
+                      <Item
+                        key={product.id}
+                        productId={product.id}
+                        product={product.product}
+                      />
+                    );
+                  } else return null;
+                })
+              )}
             </div>
           </div>
           <div>
@@ -71,7 +80,8 @@ function ProductsPage(props) {
 ProductsPage.propTypes = {
   getProducts: PropTypes.func.isRequired,
   getCart: PropTypes.func.isRequired,
-  products: PropTypes.array.isRequired
+  products: PropTypes.array.isRequired,
+  loading: PropTypes.bool.isRequired
 };
 
 const mapDispatchToProps = dispatch => ({
@@ -80,7 +90,8 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const mapStateToProps = state => ({
-  products: state.products.products
+  products: state.products.products,
+  loading: state.products.loading
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductsPage);

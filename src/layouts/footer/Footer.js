@@ -50,7 +50,7 @@ function Footer(props) {
           <div className="SubTitles">Wanna rock with us</div>
           <div>
             <div>Facebook</div>
-            <div>Instafram</div>
+            <div>Instagram</div>
           </div>
         </div>
       </div>

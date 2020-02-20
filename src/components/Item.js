@@ -15,7 +15,11 @@ function Item(props) {
     quantity: 1
   });
   const addToCart = () => {
-    props.addToCart(item);
+    if (props.authenticated) {
+      props.addToCart(item);
+    } else {
+      window.location.href = "/account";
+    }
   };
   const product = { ...props.product, productId };
   const setProductInState = () => {
@@ -53,7 +57,8 @@ function Item(props) {
 }
 
 Item.propTypes = {
-  setProduct: PropTypes.func.isRequired
+  setProduct: PropTypes.func.isRequired,
+  authenticated: PropTypes.bool.isRequired
 };
 
 const mapDispatchToProps = dispatch => ({
@@ -61,6 +66,8 @@ const mapDispatchToProps = dispatch => ({
   addToCart: product => dispatch(addToCart(product))
 });
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  authenticated: state.user.authenticated
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Item);
