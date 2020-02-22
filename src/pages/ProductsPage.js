@@ -19,14 +19,14 @@ function ProductsPage(props) {
     <div>
       <div className="ProductsContainer">
         <nav>
-          <div>Beanies</div>
-          <div>Scarves</div>
-          <div>Gloves</div>
-          <div>Exclusives</div>
+          <div><a href="#beanies">Beanies</a></div>
+          <div><a href="#scarves">Scarves</a></div>
+          <div><a href="#gloves">Gloves</a></div>
+          <div><a href="#exclusives">Exclusives</a></div>
         </nav>
         <div className="ProductsContent">
           <div>
-            <h2 className="Title">Beanies</h2>
+            <h2 className="Title" id="beanies">Beanies</h2>
             <div className="ItemsContainer">
               {props.loading ? (
                 <Spinner />
@@ -46,7 +46,7 @@ function ProductsPage(props) {
             </div>
           </div>
           <div>
-            <h2 className="Title">Scarves</h2>
+            <h2 className="Title" id="scarves">Scarves</h2>
             <div className="ItemsContainer">
               {props.loading ? (
                 <Spinner />
@@ -66,10 +66,10 @@ function ProductsPage(props) {
             </div>
           </div>
           <div>
-            <h2 className="Title">Gloves</h2>
+            <h2 className="Title" id="gloves">Gloves</h2>
           </div>
           <div>
-            <h2 className="Title">Exclusives</h2>
+            <h2 className="Title" id="exclusives">Exclusives</h2>
           </div>
         </div>
       </div>

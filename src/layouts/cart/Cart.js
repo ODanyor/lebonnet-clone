@@ -46,7 +46,7 @@ function Cart(props) {
         </div>
         <div className="CartItemsContainer">
           {items.map(item => (
-            <CartItem key={item.id} item={item} />
+            <CartItem key={item.id} item={item} trigger={props.trigger} />
           ))}
         </div>
         <div className="CartFooter">

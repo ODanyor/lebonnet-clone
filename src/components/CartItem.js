@@ -15,6 +15,7 @@ function CartItem(props) {
   const item = props.item;
   const deleteProduct = () => {
     props.deleteProduct(item.id);
+    props.trigger();
   };
   const [quantity, setQuantity] = useState(item.quantity);
   const setProduct = () => {
@@ -24,6 +25,7 @@ function CartItem(props) {
       quantity
     };
     props.setProduct(product);
+    props.trigger();
   };
   const increment = () => {
     if (quantity < 20) {

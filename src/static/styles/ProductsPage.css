@@ -34,8 +34,14 @@
     transform: rotate(0);
   }
 }
+.ProductsContainer nav div a {
+  text-decoration: none;
+  color: #000;
+}
 .ProductsContent {
   padding: 0 2rem;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
 }
 .Title {
   font-size: 80px;
