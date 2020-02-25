@@ -136,7 +136,7 @@ exports.addToCart = (req, res) => {
     .then(() => {
       return res
         .status(200)
-        .json({ message: `Product was added into the cart.` });
+        .json({ message: `Product was added.` });
     })
     .catch(err => {
       return res.status(500).json({ error: err.code });

@@ -39,12 +39,12 @@ export const StyledNotification = styled.div`
   position: fixed;
   width: 100%;
   height: 40px;
-  background-color: green;
+  background-color: ${props => props.show.backgroundColor};
   display: flex;
   justify-content: center;
   align-items: center;
 
-  transform: translateY(${props => props.show});
+  transform: translateY(${props => props.show.position});
   transition: all 0.4s ease;
   z-index: 1100;
 `;

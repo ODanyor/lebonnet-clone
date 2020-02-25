@@ -8,19 +8,27 @@ import { clearMessage } from "../redux/actions/productActions";
 export const notify = () => {};
 
 const Notification = ({ message, clearMessage, cart }) => {
-  const [position, setPosition] = useState("-100%");
+  const [properties, setProperties] = useState({
+    position: "-100%",
+    backgroundColor: "green"
+  });
   useEffect(() => {
     if (message !== "") {
-      setPosition("0");
+      setProperties({
+        position: "0",
+        backgroundColor: message === "Product was deleted." ? "red" : "green"
+      });
       setTimeout(() => {
-        setPosition("-100%");
+        setProperties({
+          position: "-100%"
+        });
         clearMessage();
       }, 3000);
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cart])
 
-  return <StyledNotification show={position}>{message}</StyledNotification>;
+  return <StyledNotification show={properties}>{message}</StyledNotification>;
 };
 
 Notification.propTypes = {
