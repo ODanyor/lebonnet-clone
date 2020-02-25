@@ -70,6 +70,12 @@ export const deleteProduct = productId => dispatch => {
       });
     });
 };
+export const clearMessage = () => dispatch => {
+  dispatch({
+    type: SET_MESSAGE,
+    payload: ""
+  });
+};
 export const getCart = () => dispatch => {
   axios
     .get("/users/cart")

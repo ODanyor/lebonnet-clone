@@ -17,6 +17,8 @@ import store from "./redux/store";
 import { SET_AUTHENTICATED } from "./redux/types";
 import { logOut } from "./redux/actions/userActions";
 
+axios.defaults.baseURL = "https://europe-west2-lebonnet-0000.cloudfunctions.net/api"
+
 const token = localStorage.Token;
 if (token) {
   const decodedToken = jwtDecode(token);
