@@ -26,7 +26,6 @@ class SignInSide extends React.Component {
   }
   handleSubmit(e) {
     e.preventDefault();
-    console.log(this.state);
     const history = this.props.history;
     this.props.signIn(this.state, history);
   }

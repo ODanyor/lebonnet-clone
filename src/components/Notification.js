@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { StyledNotification } from "../static/styledComponetns";
 // Redux
 import { connect } from "react-redux";
@@ -7,16 +7,18 @@ import { clearMessage } from "../redux/actions/productActions";
 
 export const notify = () => {};
 
-const Notification = ({ message, clearMessage }) => {
-  let position = "-100%";
-
-  if (message !== "") {
-    setTimeout(() => {
-      position = "-100%";
-      clearMessage();
-    }, 3000);
-    position = "0";
-  }
+const Notification = ({ message, clearMessage, cart }) => {
+  const [position, setPosition] = useState("-100%");
+  useEffect(() => {
+    if (message !== "") {
+      setPosition("0");
+      setTimeout(() => {
+        setPosition("-100%");
+        clearMessage();
+      }, 3000);
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [cart])
 
   return <StyledNotification show={position}>{message}</StyledNotification>;
 };
@@ -31,7 +33,8 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const mapStateToProps = state => ({
-  message: state.user.message
+  message: state.user.message,
+  cart: state.products.cart
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Notification);
