@@ -53,7 +53,7 @@ function Cart(props) {
           <div>Total</div>
           <div>€{total}.00</div>
         </div>
-        <div className="Continue">
+        <div className="Continue" onClick={props.trigger}>
           <button>Сontinue ordering</button>
         </div>
       </div>
