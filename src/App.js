@@ -1,14 +1,11 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
+// Components
+import Spinner from "./components/Spinner";
 // Layouts
 import Navbar from "./layouts/navbar/Navbar";
 import Footer from "./layouts/footer/Footer";
-// Pages
-import HomePage from "./pages/HomePage";
-import AccountPage from "./pages/AccountPage";
-import ProductsPage from "./pages/ProductsPage";
-import ProductPage from "./pages/ProductPage";
 
 import axios from "axios";
 import jwtDecode from "jwt-decode";
@@ -16,8 +13,14 @@ import jwtDecode from "jwt-decode";
 import store from "./redux/store";
 import { SET_AUTHENTICATED } from "./redux/types";
 import { logOut } from "./redux/actions/userActions";
+// Pages
+const HomePage = lazy(() => import("./pages/HomePage"));
+const AccountPage = lazy(() => import("./pages/AccountPage"));
+const ProductsPage = lazy(() => import("./pages/ProductsPage"));
+const ProductPage = lazy(() => import("./pages/ProductPage"));
 
-axios.defaults.baseURL = "https://europe-west2-lebonnet-0000.cloudfunctions.net/api"
+axios.defaults.baseURL =
+  "https://europe-west2-lebonnet-0000.cloudfunctions.net/api";
 
 const token = localStorage.Token;
 if (token) {
@@ -37,10 +40,54 @@ function App() {
       <Router>
         <Navbar />
         <Switch>
-          <Route exact strick path="/" component={HomePage} />
-          <Route exact strick path="/account" component={AccountPage} />
-          <Route exact strick path="/products" component={ProductsPage} />
-          <Route exact strick path="/product" component={ProductPage} />
+          <Route
+            exact
+            strick
+            path="/"
+            render={() => {
+              return (
+                <Suspense fallback={<Spinner />}>
+                  <HomePage />
+                </Suspense>
+              );
+            }}
+          />
+          <Route
+            exact
+            strick
+            path="/account"
+            render={() => {
+              return (
+                <Suspense fallback={<Spinner />}>
+                  <AccountPage />
+                </Suspense>
+              );
+            }}
+          />
+          <Route
+            exact
+            strick
+            path="/products"
+            render={() => {
+              return (
+                <Suspense fallback={<Spinner />}>
+                  <ProductsPage />
+                </Suspense>
+              );
+            }}
+          />
+          <Route
+            exact
+            strick
+            path="/product"
+            render={() => {
+              return (
+                <Suspense fallback={<Spinner />}>
+                  <ProductPage />
+                </Suspense>
+              );
+            }}
+          />
         </Switch>
         <Footer />
       </Router>

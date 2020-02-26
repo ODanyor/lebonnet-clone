@@ -25,8 +25,8 @@ const Notification = ({ message, clearMessage, cart }) => {
         clearMessage();
       }, 3000);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [cart])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [cart]);
 
   return <StyledNotification show={properties}>{message}</StyledNotification>;
 };
