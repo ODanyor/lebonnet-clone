@@ -73,7 +73,7 @@ export const deleteProduct = productId => dispatch => {
 export const clearMessage = () => dispatch => {
   dispatch({
     type: SET_MESSAGE,
-    payload: ""
+    payload: { message: "" }
   });
 };
 export const getCart = () => dispatch => {
