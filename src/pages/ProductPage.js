@@ -28,7 +28,29 @@ function ProductPage(props) {
       quantity: count
     };
     if (props.authenticated) {
-      props.addToCart(item);
+      let quantity;
+      const inCart = () => {
+        let foundProduct = false;
+
+        props.cart.forEach(product => {
+          if (product.productId === item.id) {
+            quantity = product.quantity;
+            foundProduct = true;
+          }
+        });
+
+        return foundProduct;
+      };
+
+      inCart()
+        ? props.addToCart({
+            id: item.id,
+            quantity: quantity + count
+          })
+        : props.addToCart({
+            id: item.id,
+            quantity: count
+          });
     } else {
       window.location.href = "/account";
     }
@@ -104,7 +126,8 @@ const mapDispatchToProps = dispatch => ({
 
 const mapStateToProps = state => ({
   product: state.products.product,
-  authenticated: state.user.authenticated
+  authenticated: state.user.authenticated,
+  cart: state.products.cart
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductPage);

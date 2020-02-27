@@ -1,6 +1,5 @@
 import { SET_ERRORS, SET_AUTHENTICATED, SET_UNAUTHENTICATED } from "../types";
 import axios from "axios";
-import { getCart } from "./productActions";
 
 export const signIn = (credentials, history) => dispatch => {
   // dispatch({ type: LOADING_USER });
@@ -12,9 +11,6 @@ export const signIn = (credentials, history) => dispatch => {
     })
     .then(() => {
       dispatch({ type: SET_AUTHENTICATED });
-    })
-    .then(() => {
-      dispatch(getCart());
     })
     .catch(err => {
       dispatch({

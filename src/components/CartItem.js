@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../static/styles/CartItem.css";
 // Redux
@@ -18,6 +18,9 @@ function CartItem(props) {
     props.trigger();
   };
   const [quantity, setQuantity] = useState(item.quantity);
+  useEffect(() => {
+    setQuantity(item.quantity);
+  }, [item]);
   const setProduct = () => {
     const product = {
       ...item.product,

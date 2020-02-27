@@ -15,9 +15,12 @@ function Cart(props) {
 
   let products = props.products;
   let items = [];
+  let total = 0;
+
+  console.log(items);
+
   props.cart.forEach(element => {
-    // eslint-disable-next-line
-    products.map(product => {
+    products.forEach(product => {
       if (element.productId === product.id) {
         items.push({
           ...product,
@@ -26,9 +29,7 @@ function Cart(props) {
       }
     });
   });
-  let total = 0;
-  // eslint-disable-next-line
-  items.map(item => {
+  items.forEach(item => {
     total = total + item.quantity * item.product.price;
   });
   return (

@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from "react";
+import React, { Suspense, lazy } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
 // Components
@@ -14,8 +14,8 @@ import store from "./redux/store";
 import { SET_AUTHENTICATED } from "./redux/types";
 import { logOut } from "./redux/actions/userActions";
 // Pages
+import AccountPage from "./pages/AccountPage";
 const HomePage = lazy(() => import("./pages/HomePage"));
-const AccountPage = lazy(() => import("./pages/AccountPage"));
 const ProductsPage = lazy(() => import("./pages/ProductsPage"));
 const ProductPage = lazy(() => import("./pages/ProductPage"));
 
@@ -44,6 +44,8 @@ function App() {
             exact
             strick
             path="/"
+            compo
+            // component={HomePage}
             render={() => {
               return (
                 <Suspense fallback={<Spinner />}>
@@ -56,18 +58,20 @@ function App() {
             exact
             strick
             path="/account"
-            render={() => {
-              return (
-                <Suspense fallback={<Spinner />}>
-                  <AccountPage />
-                </Suspense>
-              );
-            }}
+            component={AccountPage}
+            // render={() => {
+            //   return (
+            //     <Suspense fallback={<Spinner />}>
+            //       <AccountPage />
+            //     </Suspense>
+            //   );
+            // }}
           />
           <Route
             exact
             strick
             path="/products"
+            // component={ProductsPage}
             render={() => {
               return (
                 <Suspense fallback={<Spinner />}>
@@ -80,6 +84,7 @@ function App() {
             exact
             strick
             path="/product"
+            // component={ProductPage}
             render={() => {
               return (
                 <Suspense fallback={<Spinner />}>

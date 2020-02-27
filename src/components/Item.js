@@ -1,22 +1,38 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import "../static/styles/Item.css";
 // Redux
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { setProduct } from "../redux/actions/productActions";
-import { addToCart } from "../redux/actions/productActions";
+import { setProduct, addToCart } from "../redux/actions/productActions";
 
 function Item(props) {
   const productId = props.productId;
-  // eslint-disable-next-line no-unused-vars
-  const [item, setItem] = useState({
-    id: productId,
-    quantity: 1
-  });
   const addToCart = () => {
     if (props.authenticated) {
-      props.addToCart(item);
+      let quantity;
+      const inCart = () => {
+        let foundProduct = false;
+
+        props.cart.forEach(product => {
+          if (product.productId === productId) {
+            quantity = product.quantity;
+            foundProduct = true;
+          }
+        });
+
+        return foundProduct;
+      };
+
+      inCart()
+        ? props.addToCart({
+            id: productId,
+            quantity: quantity + 1
+          })
+        : props.addToCart({
+            id: productId,
+            quantity: 1
+          });
     } else {
       window.location.href = "/account";
     }
@@ -58,7 +74,9 @@ function Item(props) {
 
 Item.propTypes = {
   setProduct: PropTypes.func.isRequired,
-  authenticated: PropTypes.bool.isRequired
+  authenticated: PropTypes.bool.isRequired,
+  addToCart: PropTypes.func.isRequired,
+  cart: PropTypes.array.isRequired
 };
 
 const mapDispatchToProps = dispatch => ({
@@ -67,7 +85,8 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const mapStateToProps = state => ({
-  authenticated: state.user.authenticated
+  authenticated: state.user.authenticated,
+  cart: state.products.cart
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Item);
