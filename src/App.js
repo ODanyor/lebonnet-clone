@@ -45,7 +45,6 @@ function App() {
             strick
             path="/"
             compo
-            // component={HomePage}
             render={() => {
               return (
                 <Suspense fallback={<Spinner />}>
@@ -54,24 +53,11 @@ function App() {
               );
             }}
           />
-          <Route
-            exact
-            strick
-            path="/account"
-            component={AccountPage}
-            // render={() => {
-            //   return (
-            //     <Suspense fallback={<Spinner />}>
-            //       <AccountPage />
-            //     </Suspense>
-            //   );
-            // }}
-          />
+          <Route exact strick path="/account" component={AccountPage} />
           <Route
             exact
             strick
             path="/products"
-            // component={ProductsPage}
             render={() => {
               return (
                 <Suspense fallback={<Spinner />}>
@@ -84,7 +70,6 @@ function App() {
             exact
             strick
             path="/product"
-            // component={ProductPage}
             render={() => {
               return (
                 <Suspense fallback={<Spinner />}>

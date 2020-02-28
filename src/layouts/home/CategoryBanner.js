@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Title } from "../../static/styledComponetns";
-const beanie = require("../../static/images/slider/slider_img_1.png");
+const beanie = require("../../static/images/slider/slider_img_1.jpg");
 const scrave = require("../../static/images/home_scarve.png");
 const gloves = require("../../static/images/home_gloves.png");
 const exclusive = require("../../static/images/home_exclusive.png");

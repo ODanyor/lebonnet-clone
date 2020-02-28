@@ -132,11 +132,11 @@ exports.addToCart = (req, res) => {
   };
   db.collection("carts")
     .doc(req.user.email)
-    .update({ [product.id]: product.quantity })
+    .update({
+      [product.id]: product.quantity
+    })
     .then(() => {
-      return res
-        .status(200)
-        .json({ message: `Product was added.` });
+      return res.status(200).json({ message: `Product was added.` });
     })
     .catch(err => {
       return res.status(500).json({ error: err.code });

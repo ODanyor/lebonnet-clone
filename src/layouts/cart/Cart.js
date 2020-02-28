@@ -17,8 +17,6 @@ function Cart(props) {
   let items = [];
   let total = 0;
 
-  console.log(items);
-
   props.cart.forEach(element => {
     products.forEach(product => {
       if (element.productId === product.id) {
