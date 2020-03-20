@@ -4,9 +4,9 @@
 
 ## Features
 
-- Authentification system
+- Authentication system
 - Cart
-- Automatic notification
+- Automatic notification system
 
 ## Tech stack
 
@@ -21,9 +21,9 @@
 - Styled-Components
 - LazyLoading
 - Firebase cloud functions
-- Firebase firestore
   - NodeJS
   - Express
+- Firebase firestore
 
 ## Screenshots
 
