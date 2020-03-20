@@ -5,7 +5,6 @@
 ## Features
 
 - Authentification system
-- Shopify
 - Cart
 - Automatic notification
 
@@ -28,6 +27,10 @@
 
 ## Screenshots
 
-<!-- ![Screenshot of the project page](https://github.com/ODanyor/DoniyorGit/blob/master/src/static/readme/screenshot.jpg?raw=true) -->
+![Screenshot of the project page](https://github.com/ODanyor/LeBonnet/blob/master/src/static/readme/Screenshot_2020-03-20%20Le%20Bonnet%20by%20Dany(1)(1).jpg?raw=true)
+
+![Screenshot of the project page](https://github.com/ODanyor/LeBonnet/blob/master/src/static/readme/Screenshot_2020-03-20%20Le%20Bonnet%20by%20Dany(2).jpg?raw=true)
+
+![Screenshot of the project page](https://github.com/ODanyor/LeBonnet/blob/master/src/static/readme/Screenshot_2020-03-20%20Le%20Bonnet%20by%20Dany(1)(2).jpg?raw=true)
 
 ## [Live](https://lebonnet-0000.firebaseapp.com/)
