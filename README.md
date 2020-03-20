@@ -8,7 +8,7 @@
 - Cart
 - Automatic notification
 
-## Tech Stack
+## Tech stack
 
 - ReactJS
 - React hooks
