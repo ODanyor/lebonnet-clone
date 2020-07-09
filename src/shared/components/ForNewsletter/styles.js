@@ -23,7 +23,7 @@ export const ForNewsletter = styled.div`
   }
 `
 
-export const SingleForm = styled.form`
+export const SingleForm = styled.label`
   padding: 5px;
   height: 3em;
   display: flex;

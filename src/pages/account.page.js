@@ -10,35 +10,41 @@ import { Form } from "shared/components"
 import boy from "shared/assets/images/boy.jpg"
 
 const forms = {
-  loginForm: [
-    {
-      name: "email",
-      placeholder: "Email",
-      type: "text",
-    },
-    {
-      name: "password",
-      placeholder: "Password",
-      type: "password",
-    },
-  ],
-  registerForm: [
-    {
-      name: "email",
-      placeholder: "Email",
-      type: "text",
-    },
-    {
-      name: "password",
-      placeholder: "Password",
-      type: "password",
-    },
-    {
-      name: "confirmPassword",
-      placeholder: "Confirm password",
-      type: "password",
-    },
-  ],
+  loginForm: {
+    title: "Registered customers",
+    fields: [
+      {
+        name: "email",
+        placeholder: "Email",
+        type: "text",
+      },
+      {
+        name: "password",
+        placeholder: "Password",
+        type: "password",
+      },
+    ],
+  },
+  registerForm: {
+    title: "New customers",
+    fields: [
+      {
+        name: "email",
+        placeholder: "Email",
+        type: "text",
+      },
+      {
+        name: "password",
+        placeholder: "Password",
+        type: "password",
+      },
+      {
+        name: "confirmPassword",
+        placeholder: "Confirm password",
+        type: "password",
+      },
+    ],
+  },
 }
 
 function index() {
@@ -51,14 +57,16 @@ function index() {
           img={boy}
           formitems={forms.loginForm}
           formSubmit={login}
-          buttonValue="Log in"
+          button="Log in"
+          colored={true}
         />
       }
       right={
         <Form
           formitems={forms.registerForm}
           formSubmit={register}
-          buttonValue="Create an account"
+          button="Create an account"
+          colored={false}
         />
       }
     />

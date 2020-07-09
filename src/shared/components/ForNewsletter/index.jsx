@@ -2,8 +2,8 @@ import React from "react"
 import { ForNewsletter, SingleForm } from "./styles"
 
 const EmailForm = () => (
-  <SingleForm>
-    <input type="text" placeholder="Your email address" />
+  <SingleForm for="email">
+    <input type="text" id="email" placeholder="Your email address" />
     <button>Sign up</button>
   </SingleForm>
 )
