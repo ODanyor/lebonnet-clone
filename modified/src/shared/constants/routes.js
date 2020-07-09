@@ -1,0 +1,5 @@
+export const HOME = "/"
+export const ACCOUNT = "/account"
+export const PRODUCTS = "/products"
+export const PRODUCT = "/product/:id"
+export const NOT_FOUND = "/*"
