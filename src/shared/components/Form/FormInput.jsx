@@ -1,8 +1,8 @@
-import React from "react"
+import React, { forwardRef } from "react"
 import { Input } from "./styles"
 
-const FormInput = (props) => {
-  return <Input {...props} />
-}
+const FormInput = forwardRef((props, ref) => {
+  return <Input {...props} ref={ref} />
+})
 
 export default FormInput
