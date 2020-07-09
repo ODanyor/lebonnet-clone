@@ -1,8 +1,8 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import "../../static/styles/BannerOne.css";
-const hand = require("../../static/images/hand.png");
-const baby = require("../../static/images/baby.jpg");
+import React from "react"
+import { Link } from "react-router-dom"
+import "static/styles/BannerOne.css"
+const hand = require("static/images/hand.png")
+const baby = require("static/images/baby.jpg")
 
 function BannerOne() {
   return (
@@ -29,7 +29,7 @@ function BannerOne() {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default BannerOne;
+export default BannerOne

@@ -1,45 +1,41 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import "../../static/styles/Slider.css";
-const slider_img_1 = require("../../static/images/slider/slider_img_1.jpg");
-const slider_img_2 = require("../../static/images/slider/slider_img_2.jpg");
+import React, { useState, useEffect } from "react"
+import { Link } from "react-router-dom"
+import "../../static/styles/Slider.css"
+const slider_img_1 = require("../../static/images/slider/slider_img_1.jpg")
+const slider_img_2 = require("../../static/images/slider/slider_img_2.jpg")
 
 function Slider() {
-  const [seconds, setSeconds] = useState(0);
-  const [counter, setCounter] = useState(0);
+  const [seconds, setSeconds] = useState(0)
+  const [counter, setCounter] = useState(0)
   const [sliders, setSliders] = useState([
     { topic: "Winter is coming", img: slider_img_1 },
-    { topic: "100% biodegradable", img: slider_img_2 }
-  ]);
+    { topic: "100% biodegradable", img: slider_img_2 },
+  ])
 
   useEffect(() => {
-    let interval = null;
+    let interval = null
     interval = setInterval(() => {
-      setSeconds(prevState => prevState + 1);
-    }, 1000);
+      setSeconds((prevState) => prevState + 1)
+    }, 1000)
     if (seconds !== 0) {
-      clearInterval(interval);
+      clearInterval(interval)
     }
-    return () => clearInterval(interval);
-  }, []);
-  // "slideOut 1.3s ease";
-  // "slideIn 1s ease";
+    return () => clearInterval(interval)
+  }, [])
 
   const reset = () => {
-    setSeconds(0);
-  };
+    setSeconds(0)
+  }
 
   if (seconds === 4) {
-    document.querySelector("#img").style.animation = "slideOut 1.1s ease";
+    document.querySelector("#img").style.animation = "slideOut 1.1s ease"
   }
   if (seconds === 5) {
-    document.querySelector("#img").style.animation = "slideIn 1s ease";
-    reset();
-    setCounter(prevState => prevState + 1);
+    document.querySelector("#img").style.animation = "slideIn 1s ease"
+    reset()
+    setCounter((prevState) => prevState + 1)
     if (counter === sliders.length - 1) {
-      setCounter(0);
+      setCounter(0)
     }
   }
 
@@ -61,9 +57,8 @@ function Slider() {
           </div>
         </Link>
       </div>
-      {/* Slide map indicator */}
     </div>
-  );
+  )
 }
 
-export default Slider;
+export default Slider

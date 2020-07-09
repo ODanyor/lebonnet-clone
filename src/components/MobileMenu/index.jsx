@@ -1,17 +1,10 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import "../static/styles/MobileMenu.css";
-// Components
-import Background from "../components/Background";
+import React from "react"
+import { Link } from "react-router-dom"
+import { MobileMenu } from "./styles"
 
 function MobileMenu(props) {
-  let style = "MobileMenu hide";
-  if (props.show) {
-    style = "MobileMenu open";
-  }
   return (
-    <>
-      {props.show ? <Background trigger={props.trigger} /> : null}
+    <MobileMenu>
       <div className={style}>
         <ul>
           <li onClick={props.trigger}>
@@ -42,8 +35,8 @@ function MobileMenu(props) {
           <li>Store locator</li>
         </ul>
       </div>
-    </>
-  );
+    </MobileMenu>
+  )
 }
 
-export default MobileMenu;
+export default MobileMenu
