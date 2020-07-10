@@ -5,4 +5,8 @@ import { color } from "shared/utils/styles"
 export const StyledLink = styled(Link)`
   text-decoration: none;
   color: ${color.black};
+
+  &:active {
+    color: ${color.red};
+  }
 `

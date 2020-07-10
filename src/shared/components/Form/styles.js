@@ -28,6 +28,10 @@ export const Input = styled.input`
   height: 4em;
   margin: 5px 0;
   padding: 5px;
+  &::placeholder {
+    color: ${(props) => (props.error ? color.red : color.gray)};
+    ${font.bold};
+  }
 `
 
 export const Button = styled.button`
@@ -46,4 +50,8 @@ export const Button = styled.button`
     color: ${color.white};
     background-color: ${color.red};
   }
+`
+
+export const Message = styled.div`
+  color: ${color.red};
 `
