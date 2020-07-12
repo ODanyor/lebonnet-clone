@@ -8,7 +8,8 @@ export const Banner = styled.div`
 
   span {
     text-transform: uppercase;
-    text-align: center;
+    display: flex;
+    justify-content: center;
     color: ${color.red};
     ${font.size(13)};
   }

@@ -26,7 +26,5 @@ export const Slide = styled.div`
 export const SlideTitle = styled.div`
   position: absolute;
   width: 100%;
-  display: flex;
-  justify-content: center;
   bottom: 30%;
 `

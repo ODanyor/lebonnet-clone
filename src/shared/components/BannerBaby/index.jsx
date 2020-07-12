@@ -11,11 +11,13 @@ const index = () => {
   return (
     <Banner img={baby}>
       <Link to="/products#beanies">
-        <span>
-          <Title colored={true}>Le bonnet</Title>
-          <Title colored={true}>Mini</Title>
-          <div>But now</div>
-        </span>
+        <Title centered={true} colored={true}>
+          Le bonnet
+        </Title>
+        <Title centered={true} colored={true}>
+          Mini
+        </Title>
+        <span>Buy now</span>
       </Link>
     </Banner>
   )

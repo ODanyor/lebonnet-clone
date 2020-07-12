@@ -2,6 +2,7 @@ import styled from "styled-components"
 import { color, font } from "shared/utils/styles"
 
 export const Title = styled.div`
+  ${(props) => props.centered && "text-align: center"};
   ${font.size(75)};
   ${font.bold};
   text-transform: uppercase;

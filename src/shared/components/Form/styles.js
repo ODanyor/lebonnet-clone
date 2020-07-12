@@ -18,7 +18,6 @@ export const Form = styled.form`
   max-height: 500px;
   display: flex;
   flex-direction: column;
-  text-align: center;
 `
 
 export const Input = styled.input`

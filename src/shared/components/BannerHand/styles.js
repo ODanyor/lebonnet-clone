@@ -50,7 +50,8 @@ export const Canvas = styled.div`
 
   span {
     text-transform: uppercase;
-    text-align: center;
+    display: flex;
+    justify-content: center;
     color: ${color.white};
     ${font.size(13)};
   }

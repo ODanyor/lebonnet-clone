@@ -28,7 +28,9 @@ const Index = (props) => {
   return (
     <FormContainer img={img}>
       <Form onSubmit={handleSubmit(submit)}>
-        <Title colored={!colored}>{formitems.title}</Title>
+        <Title centered={true} colored={!colored}>
+          {formitems.title}
+        </Title>
 
         {formitems.fields.map((input, index) => (
           <FormInput

@@ -1,3 +1,5 @@
-export { default as NavbarComposition } from "./NavbarComposition"
 export { default as FooterWithCopyright } from "./FooterWithCopyright"
+export { default as NavbarComposition } from "./NavbarComposition"
+export { default as WithScrollbar } from "./WithScrollbar"
+export { default as Products } from "./Products"
 export { default as Banners } from "./Banners"

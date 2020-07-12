@@ -8,12 +8,12 @@ import { NavbarComposition, FooterWithCopyright } from "shared/compositions"
 
 const index = ({ children }) => {
   return (
-    <div>
+    <React.Fragment>
       <NavbarComposition />
       {children}
       <ForNewsletter />
       <FooterWithCopyright />
-    </div>
+    </React.Fragment>
   )
 }
 

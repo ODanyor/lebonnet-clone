@@ -8,7 +8,9 @@ const Slides = ({ slides }) =>
   slides.map((slide, index) => (
     <Slide key={index}>
       <SlideTitle>
-        <Title colored={false}>{slide.title}</Title>
+        <Title centered={true} colored={false}>
+          {slide.title}
+        </Title>
       </SlideTitle>
       <img alt="slide" src={slide.img} width="100%" />
     </Slide>

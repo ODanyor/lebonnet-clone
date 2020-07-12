@@ -14,10 +14,8 @@ const index = () => {
       <Canvas img={canvas}>
         <img alt="gloves" src={hand} width="115%" height="auto" />
         <Link to="/products#gloves">
-          <span>
-            <Title>Gloves</Title>
-            <div>shop now</div>
-          </span>
+          <Title centered={true}>Gloves</Title>
+          <span>shop now</span>
         </Link>
       </Canvas>
     </Banner>
