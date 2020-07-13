@@ -11,11 +11,11 @@ const swiperList = [
   { content: "All natural fibres in 25 colours" },
 ]
 
-const index = () => {
+const index = (props) => {
   return (
     <NavbarComposition>
       <Swiper list={swiperList} />
-      <Navbar />
+      <Navbar {...props} />
     </NavbarComposition>
   )
 }

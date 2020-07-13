@@ -9,10 +9,16 @@ const Index = ({ product, img }) => {
 
   const image = new Image()
   image.src = product.product.photo_1
-  image.onload = () => setMainImg(product.product.photo_1)
+  image.onload = () => setMainImg(image.src)
 
   return (
     <Product img={mainImg}>
+      <img
+        alt="hoverImg"
+        src={product.product.photo_2}
+        width="100%"
+        height="auto"
+      />
       <button>Add to cart €{product.product.price.toFixed(2)}</button>
     </Product>
   )

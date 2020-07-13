@@ -11,12 +11,13 @@ export const Navbar = styled.div`
 export const NavbarLinks = styled.ul`
   display: flex;
   justify-content: space-evenly;
-  text-transform: uppercase;
+
   ${font.size(13)};
   letter-spacing: 1.3px;
 `
 
 export const NavbarLink = styled.li`
+  text-transform: uppercase;
   padding: 5px;
 `
 

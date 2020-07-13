@@ -5,7 +5,7 @@ import { Navbar, NavbarLinks, NavbarLink, NavbarLinkUnderline } from "./styles"
 import logo from "shared/assets/logo.svg"
 
 // Components
-import { Link } from "shared/components"
+import { Link, Button } from "shared/components"
 
 // Navigation links
 const leftLinks = [
@@ -36,7 +36,7 @@ const LinkItem = ({ link }) => {
 const LinkItems = ({ links }) =>
   links.map((link, index) => <LinkItem key={index} link={link} />)
 
-const index = () => {
+const index = ({ trigger }) => {
   return (
     <Navbar>
       <NavbarLinks>
@@ -49,7 +49,9 @@ const index = () => {
       </Link>
       <NavbarLinks>
         <LinkItems links={rightLinks} />
-        <NavbarLink>Cart</NavbarLink>
+        <Button onClick={trigger}>
+          <NavbarLink>Cart</NavbarLink>
+        </Button>
       </NavbarLinks>
     </Navbar>
   )
