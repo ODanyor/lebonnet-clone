@@ -1,4 +1,5 @@
 export { default as FooterWithCopyright } from "./FooterWithCopyright"
+export { default as CartWithBackground } from "./CartWithBackground"
 export { default as NavbarComposition } from "./NavbarComposition"
 export { default as WithScrollbar } from "./WithScrollbar"
 export { default as Products } from "./Products"

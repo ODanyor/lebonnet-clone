@@ -1,5 +1,5 @@
 import styled from "styled-components"
 
-export const Main = styled.div`
+export const WithScrollbar = styled.div`
   padding-top: 113px;
 `

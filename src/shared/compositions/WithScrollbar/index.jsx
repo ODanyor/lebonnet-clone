@@ -1,15 +1,15 @@
 import React from "react"
-import { Main } from "./styles"
+import { WithScrollbar } from "./styles"
 
 // Components
 import { Scrollbar } from "shared/components"
 
 const index = ({ children }) => {
   return (
-    <Main>
+    <WithScrollbar>
       <Scrollbar />
       {children}
-    </Main>
+    </WithScrollbar>
   )
 }
 

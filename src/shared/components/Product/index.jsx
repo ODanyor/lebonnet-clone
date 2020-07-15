@@ -4,6 +4,9 @@ import { Product } from "./styles"
 // HOC
 import { withLoading } from "shared/hoc/withLoading"
 
+// Components
+import { Link } from "shared/components"
+
 const Index = ({ product, img }) => {
   const [mainImg, setMainImg] = useState(img)
 
@@ -13,15 +16,18 @@ const Index = ({ product, img }) => {
 
   return (
     <Product img={mainImg}>
-      <img
-        alt="hoverImg"
-        src={product.product.photo_2}
-        width="100%"
-        height="auto"
-      />
+      <Link to={`/products/${product.id}`}>
+        <img
+          alt="hoverImg"
+          src={product.product.photo_2}
+          width="100%"
+          height="auto"
+        />
+      </Link>
       <button>Add to cart €{product.product.price.toFixed(2)}</button>
     </Product>
   )
 }
+Index.displayName = "Cart"
 
 export default withLoading(Index)

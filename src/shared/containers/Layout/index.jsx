@@ -1,10 +1,14 @@
 import React, { useState } from "react"
 
 // Components
-import { ForNewsletter, Cart } from "shared/components"
+import { ForNewsletter } from "shared/components"
 
 // Compositions
-import { NavbarComposition, FooterWithCopyright } from "shared/compositions"
+import {
+  NavbarComposition,
+  CartWithBackground,
+  FooterWithCopyright,
+} from "shared/compositions"
 
 const Index = ({ children }) => {
   const [showcart, setShowcart] = useState(false)
@@ -13,7 +17,7 @@ const Index = ({ children }) => {
   return (
     <React.Fragment>
       <NavbarComposition trigger={toggle} />
-      <Cart trigger={toggle} show={showcart} />
+      <CartWithBackground trigger={toggle} show={showcart} />
       {children}
       <ForNewsletter />
       <FooterWithCopyright />

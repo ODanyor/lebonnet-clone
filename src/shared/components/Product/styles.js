@@ -2,7 +2,6 @@ import styled from "styled-components"
 import { color, font } from "shared/utils/styles"
 
 export const Product = styled.div`
-  cursor: pointer;
   position: relative;
   margin: 15px;
   width: calc(25% - 50px);

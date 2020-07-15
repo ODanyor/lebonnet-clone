@@ -5,10 +5,10 @@ import { Footer, Copyright } from "shared/components"
 
 const index = () => {
   return (
-    <div>
+    <React.Fragment>
       <Footer />
       <Copyright />
-    </div>
+    </React.Fragment>
   )
 }
 

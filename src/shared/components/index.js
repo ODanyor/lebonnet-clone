@@ -1,4 +1,5 @@
 export { default as ForNewsletter } from "./ForNewsletter"
+export { default as Background } from "./Background"
 export { default as BannerHand } from "./BannerHand"
 export { default as BannerBaby } from "./BannerBaby"
 export { default as Scrollbar } from "./Scrollbar"

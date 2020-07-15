@@ -1,8 +1,7 @@
 import React from "react"
 import { StyledLink } from "./styles"
 
-const index = (props) => {
-  const { to, children } = props
+const index = ({ to, children }) => {
   return <StyledLink to={to}>{children}</StyledLink>
 }
 

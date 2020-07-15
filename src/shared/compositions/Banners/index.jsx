@@ -9,5 +9,6 @@ const index = ({ left, right }) => {
     </Banners>
   )
 }
+index.displayName = "Banners"
 
 export default index
