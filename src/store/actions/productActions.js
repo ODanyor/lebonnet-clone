@@ -1,8 +1,7 @@
 import {
   SET_ERRORS,
   LOADING_DATA,
-  GET_PRODUCTS,
-  SET_PRODUCT,
+  SET_PRODUCTS,
   SET_CART,
   SET_MESSAGE,
 } from "../types"
@@ -14,7 +13,7 @@ export const getProducts = () => (dispatch) => {
     .get("/products")
     .then((res) => {
       dispatch({
-        type: GET_PRODUCTS,
+        type: SET_PRODUCTS,
         payload: res.data,
       })
     })
@@ -26,12 +25,22 @@ export const getProducts = () => (dispatch) => {
     })
 }
 
-export const setProduct = (product) => (dispatch) => {
+export const getProduct = (id) => (dispatch) => {
   dispatch({ type: LOADING_DATA })
-  dispatch({
-    type: SET_PRODUCT,
-    payload: product,
-  })
+  axios
+    .get(`/products/${id}`)
+    .then((res) => {
+      dispatch({
+        type: SET_PRODUCTS,
+        payload: [{ id: id, product: res.data }],
+      })
+    })
+    .catch((err) => {
+      dispatch({
+        type: SET_ERRORS,
+        payload: err,
+      })
+    })
 }
 
 export const addToCart = (product) => (dispatch) => {

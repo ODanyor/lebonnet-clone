@@ -4,6 +4,7 @@ import React, { useState } from "react"
 import { Banners } from "shared/compositions"
 
 // Components
+import { Helmet } from "react-helmet"
 import { Form } from "shared/components"
 
 // Images
@@ -72,27 +73,33 @@ function Index() {
   }
 
   return (
-    <Banners
-      left={
-        <Form
-          img={boy}
-          formitems={forms.loginForm}
-          formSubmit={login}
-          button="Log in"
-          colored={true}
-          validationErrors={validationErrors.login}
-        />
-      }
-      right={
-        <Form
-          formitems={forms.registerForm}
-          formSubmit={register}
-          button="Create an account"
-          colored={false}
-          validationErrors={validationErrors.register}
-        />
-      }
-    />
+    <React.Fragment>
+      <Helmet>
+        <title>Account</title>
+      </Helmet>
+
+      <Banners
+        left={
+          <Form
+            img={boy}
+            formitems={forms.loginForm}
+            formSubmit={login}
+            button="Log in"
+            colored={true}
+            validationErrors={validationErrors.login}
+          />
+        }
+        right={
+          <Form
+            formitems={forms.registerForm}
+            formSubmit={register}
+            button="Create an account"
+            colored={false}
+            validationErrors={validationErrors.register}
+          />
+        }
+      />
+    </React.Fragment>
   )
 }
 

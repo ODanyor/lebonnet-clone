@@ -1,9 +1,6 @@
 import React, { useState } from "react"
 import { Product } from "./styles"
 
-// HOC
-import { withLoading } from "shared/hoc/withLoading"
-
 // Components
 import { Link } from "shared/components"
 
@@ -30,4 +27,4 @@ const Index = ({ product, img }) => {
 }
 Index.displayName = "Cart"
 
-export default withLoading(Index)
+export default Index

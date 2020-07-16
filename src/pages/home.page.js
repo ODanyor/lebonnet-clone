@@ -5,6 +5,7 @@ import slide_img_1 from "shared/assets/images/slide_img_1.jpg"
 import slide_img_2 from "shared/assets/images/slide_img_2.jpg"
 
 // Components
+import { Helmet } from "react-helmet"
 import { Slider, BannerHand, BannerBaby } from "shared/components"
 
 // Compositions
@@ -18,6 +19,10 @@ const slides = [
 function index() {
   return (
     <div>
+      <Helmet>
+        <title>LeBonnet(clone)</title>
+      </Helmet>
+
       <section>
         <Slider slides={slides} />
       </section>
