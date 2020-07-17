@@ -7,7 +7,7 @@ export const Title = styled.div`
   ${font.bold};
   text-transform: uppercase;
   color: rgba(0, 0, 0, 0);
-  -webkit-text-stroke: 2px
+  -webkit-text-stroke: 1.3px
     ${(props) => (props.colored ? color.red : color.white)};
   transition: color var(--transition);
   &:hover {

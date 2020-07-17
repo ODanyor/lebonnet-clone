@@ -8,7 +8,10 @@ export const color = {
 
 export const font = {
   size: (size) => `font-size: ${size}px`,
+  color: (color) => `color: ${color}`,
 
   light: "font-weight: 200",
   bold: "font-weight: 900",
+
+  italic: "font-style: italic",
 }
