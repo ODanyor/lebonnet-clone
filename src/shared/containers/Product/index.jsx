@@ -2,12 +2,14 @@ import React from "react"
 import { Product } from "./styles"
 
 // Components
-import { Details } from "shared/components"
+import { Illustrations, Details } from "shared/components"
 
-const index = (props) => {
+const index = ({ product }) => {
+  const { photo_1, photo_2, photo_3, ...rest } = product
   return (
     <Product>
-      <Details {...props} />
+      <Illustrations images={[photo_1, photo_2, photo_3]} />
+      <Details {...rest} />
     </Product>
   )
 }

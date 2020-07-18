@@ -36,7 +36,7 @@ const LinkItem = ({ link }) => {
 const LinkItems = ({ links }) =>
   links.map((link, index) => <LinkItem key={index} link={link} />)
 
-const index = ({ trigger }) => {
+const index = ({ trigger, cartLength }) => {
   return (
     <Navbar>
       <NavbarLinks>
@@ -50,7 +50,7 @@ const index = ({ trigger }) => {
       <NavbarLinks>
         <LinkItems links={rightLinks} />
         <Button onClick={trigger}>
-          <NavbarLink>Cart</NavbarLink>
+          <NavbarLink>Cart({cartLength})</NavbarLink>
         </Button>
       </NavbarLinks>
     </Navbar>

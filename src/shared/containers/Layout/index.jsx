@@ -1,5 +1,8 @@
 import React, { useState } from "react"
 
+// Hooks
+import { useSelector } from "react-redux"
+
 // Components
 import { ForNewsletter } from "shared/components"
 
@@ -10,14 +13,16 @@ import {
   FooterWithCopyright,
 } from "shared/compositions"
 
-const Index = ({ children }) => {
+function Index({ children }) {
   const [showcart, setShowcart] = useState(false)
   const toggle = () => setShowcart((prevState) => !prevState)
 
+  const cart = useSelector((state) => state.products.cart)
+
   return (
     <React.Fragment>
-      <NavbarComposition trigger={toggle} />
-      <CartWithBackground trigger={toggle} show={showcart} />
+      <NavbarComposition trigger={toggle} cartLength={cart.length} />
+      <CartWithBackground trigger={toggle} show={showcart} cart={cart} />
       {children}
       <ForNewsletter />
       <FooterWithCopyright />

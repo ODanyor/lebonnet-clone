@@ -1,6 +1,14 @@
 import styled from "styled-components"
 import { color, font } from "shared/utils/styles"
 
+export const Details = styled.div`
+  padding: 0 50px;
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 113px;
+  max-height: 50vh;
+`
+
 export const Buttons = styled.div`
   width: 100%;
   height: 70px;

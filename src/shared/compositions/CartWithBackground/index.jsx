@@ -2,11 +2,11 @@ import React from "react"
 
 import { Cart, Background } from "shared/components"
 
-const index = (props) => {
+const index = ({ cart, ...rest }) => {
   return (
     <React.Fragment>
-      <Cart {...props} />
-      <Background {...props} />
+      <Cart cart={cart} {...rest} />
+      <Background {...rest} />
     </React.Fragment>
   )
 }

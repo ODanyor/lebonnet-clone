@@ -1,8 +1,11 @@
 import React, { useReducer } from "react"
-import { Buttons, CounterButtons, AddButton } from "./styles"
+import { Details, Buttons, CounterButtons, AddButton } from "./styles"
 
 // Components
-import { Box, Title, Text, Button } from "shared/components"
+import { Title, Text, Button } from "shared/components"
+
+// Containers
+import { Box } from "shared/containers"
 
 const TitleNamePrice = ({ name, price }) => (
   <Box>
@@ -23,13 +26,13 @@ const Description = ({ description }) => (
 )
 
 const Controllers = ({ price }) => {
-  const initialState = { count: 0 }
+  const initialState = { count: 1 }
   function reducer(state, action) {
     switch (action.type) {
       case "increment":
         return { count: state.count < 20 ? state.count + 1 : state.count }
       case "decrement":
-        return { count: state.count > 0 ? state.count - 1 : state.count }
+        return { count: state.count > 1 ? state.count - 1 : state.count }
       default:
         throw new Error()
     }
@@ -58,15 +61,41 @@ const Controllers = ({ price }) => {
   )
 }
 
-const index = ({ product }) => {
-  const { name, price, description } = product
+const Info = ({ info }) => (
+  <Box padding="20px 0px">
+    <Text size={19} bold={true} uppercase={true}>
+      Product info
+    </Text>
+
+    <Box>
+      {info.map(
+        (item, index) =>
+          item.value !== "" && (
+            <Text key={index} size={13} margin="10px 0">
+              {item.title}: {item.value}
+            </Text>
+          )
+      )}
+    </Box>
+  </Box>
+)
+
+const index = (props) => {
+  const { name, price, description, fabric, fit, size, treatment } = props
+  const productInfo = [
+    { title: "Fabric", value: fabric },
+    { title: "Fit", value: fit },
+    { title: "Size", value: size },
+    { title: "Treatment", value: treatment },
+  ]
 
   return (
-    <Box padding="0 50px">
+    <Details>
       <TitleNamePrice name={name} price={price} />
       <Description description={description} />
       <Controllers price={price} />
-    </Box>
+      <Info info={productInfo} />
+    </Details>
   )
 }
 
