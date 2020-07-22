@@ -2,6 +2,7 @@ import React, { lazy, Suspense } from "react"
 import { Switch, Route } from "react-router-dom"
 import { Spinner } from "shared/components"
 import * as ROUTE from "shared/constants/routes"
+import Auth from "Auth"
 
 // Pages
 const Home = lazy(() => import("pages/home.page"))
@@ -13,6 +14,8 @@ const NotFound = lazy(() => import("pages/404.page"))
 export const Routes = () => {
   return (
     <Switch>
+      <Route exact path={ROUTE.AUTH} component={Auth} />
+
       <Route
         exact
         path={ROUTE.HOME}

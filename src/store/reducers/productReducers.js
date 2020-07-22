@@ -10,7 +10,9 @@ const initialState = {
   loading: false,
   products: [],
   errors: {},
-  cart: [],
+  cart: [
+    // { productId: string, quantity: number }
+  ],
 }
 
 const productReducers = (state = initialState, action) => {

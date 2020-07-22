@@ -4,12 +4,14 @@ import { Product } from "./styles"
 // Components
 import { Illustrations, Details } from "shared/components"
 
-const index = ({ product }) => {
-  const { photo_1, photo_2, photo_3, ...rest } = product
+const index = (props) => {
+  const { product, ...rest } = props
+  const { photo_1, photo_2, photo_3, ...details } = product
+
   return (
     <Product>
       <Illustrations images={[photo_1, photo_2, photo_3]} />
-      <Details {...rest} />
+      <Details {...details} {...rest} />
     </Product>
   )
 }

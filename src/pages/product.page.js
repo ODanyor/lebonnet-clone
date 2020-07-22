@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux"
 import { useParams } from "react-router-dom"
 
 // Redux
-import { getProduct } from "store/actions/productActions"
+import { getProduct, addToCart } from "store/actions/productActions"
 
 // Components
 import { Helmet } from "react-helmet"
@@ -31,7 +31,7 @@ function Index() {
         <title>LeBonnet(clone) - Product: {product.name}</title>
       </Helmet>
 
-      <Product product={product} />
+      <Product product={product} addToCart={addToCart} />
     </React.Fragment>
   ) : (
     <h1>Skeleton ...</h1>

@@ -36,8 +36,8 @@ export const signUp = (credentials, history) => (dispatch) => {
     })
 }
 
-export const logOut = () => (dispatch) => {
+export const logOut = (history) => (dispatch) => {
   removeStoredAuthToken()
   dispatch({ type: SET_UNAUTHENTICATED })
-  window.location.href = "/account"
+  history.push("/account")
 }

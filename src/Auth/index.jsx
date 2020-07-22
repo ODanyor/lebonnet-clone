@@ -1,7 +1,10 @@
 import React from "react"
+import { Redirect } from "react-router-dom"
+import { useIsAuthenticated } from "shared/hooks"
 
-const index = () => {
-  return <div></div>
+const Index = () => {
+  useIsAuthenticated()
+  return <Redirect to="/" />
 }
 
-export default index
+export default Index

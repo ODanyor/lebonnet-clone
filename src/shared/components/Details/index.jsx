@@ -1,4 +1,6 @@
 import React, { useReducer } from "react"
+import { useParams, useHistory } from "react-router-dom"
+import { useSelector, useDispatch } from "react-redux"
 import { Details, Buttons, CounterButtons, AddButton } from "./styles"
 
 // Components
@@ -25,7 +27,20 @@ const Description = ({ description }) => (
   </Box>
 )
 
-const Controllers = ({ price }) => {
+const Controllers = ({ price, addToCart }) => {
+  const { id } = useParams()
+  const history = useHistory()
+  const authenticated = useSelector((state) => state.user.authenticated)
+  const dispatchToStore = useDispatch()
+
+  const addButtonHandle = () => {
+    if (authenticated) {
+      dispatchToStore(addToCart({ productId: id, quantity: state.count }))
+    } else {
+      history.push("/account")
+    }
+  }
+
   const initialState = { count: 1 }
   function reducer(state, action) {
     switch (action.type) {
@@ -56,7 +71,9 @@ const Controllers = ({ price }) => {
           </Text>
         </Button>
       </CounterButtons>
-      <AddButton>Add to cart €{(state.count * price).toFixed(2)}</AddButton>
+      <AddButton onClick={addButtonHandle}>
+        Add to cart €{(state.count * price).toFixed(2)}
+      </AddButton>
     </Buttons>
   )
 }
@@ -81,7 +98,16 @@ const Info = ({ info }) => (
 )
 
 const index = (props) => {
-  const { name, price, description, fabric, fit, size, treatment } = props
+  const {
+    name,
+    price,
+    description,
+    fabric,
+    fit,
+    size,
+    treatment,
+    addToCart,
+  } = props
   const productInfo = [
     { title: "Fabric", value: fabric },
     { title: "Fit", value: fit },
@@ -93,7 +119,7 @@ const index = (props) => {
     <Details>
       <TitleNamePrice name={name} price={price} />
       <Description description={description} />
-      <Controllers price={price} />
+      <Controllers price={price} addToCart={addToCart} />
       <Info info={productInfo} />
     </Details>
   )

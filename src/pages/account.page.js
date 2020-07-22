@@ -1,4 +1,7 @@
 import React, { useState } from "react"
+import { useDispatch } from "react-redux"
+import { useHistory } from "react-router-dom"
+import { signIn, signUp } from "store/actions/userActions"
 
 // Compositions
 import { Banners } from "shared/compositions"
@@ -53,13 +56,17 @@ const forms = {
 
 function Index() {
   const [validationErrors, setValidationErrors] = useState({})
+
+  const history = useHistory()
+  const dispatch = useDispatch()
+
   const login = (credentials) => {
     const { errors } = credentialValidation(credentials)
     if (Object.keys(errors).length > 0) {
       setValidationErrors({ login: errors })
     } else {
       setValidationErrors({})
-      console.log(credentials)
+      dispatch(signIn(credentials, history))
     }
   }
   const register = (credentials) => {
@@ -68,7 +75,7 @@ function Index() {
       setValidationErrors({ register: errors })
     } else {
       setValidationErrors({})
-      console.log(credentials)
+      dispatch(signUp(credentials, history))
     }
   }
 
