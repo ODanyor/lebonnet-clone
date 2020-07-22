@@ -2,13 +2,13 @@ import {
   LOADING_USER,
   SET_AUTHENTICATED,
   SET_UNAUTHENTICATED,
-  SET_MESSAGE,
+  SET_NOTIFICATION,
 } from "../types"
 
 const initialState = {
   loading: false,
   authenticated: false,
-  message: "",
+  notification: null,
 }
 
 const userReducers = (state = initialState, action) => {
@@ -30,7 +30,7 @@ const userReducers = (state = initialState, action) => {
         authenticated: false,
         loading: false,
       }
-    case SET_MESSAGE:
+    case SET_NOTIFICATION:
       return {
         ...state,
         ...action.payload,

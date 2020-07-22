@@ -2,6 +2,7 @@ import { useEffect } from "react"
 import { useDispatch } from "react-redux"
 import { useHistory } from "react-router-dom"
 import { logOut } from "store/actions/userActions"
+import { getCart } from "store/actions/productActions"
 import { getStoredAuthToken } from "shared/utils/authToken"
 import jwtDecode from "jwt-decode"
 
@@ -16,7 +17,10 @@ export const useIsAuthenticated = () => {
       const decodedToken = jwtDecode(token)
 
       if (decodedToken.exp * 1000 < Date.now()) dispatch(logOut(history))
-      else dispatch({ type: "SET_AUTHENTICATED" })
+      else {
+        dispatch(getCart())
+        dispatch({ type: "SET_AUTHENTICATED" })
+      }
     }
 
     //eslint-disable-next-line

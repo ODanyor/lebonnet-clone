@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { useSelector } from "react-redux"
-import { ForNewsletter } from "shared/components"
+import { ForNewsletter, Notification } from "shared/components"
 import {
   NavbarComposition,
   CartWithBackground,
@@ -15,6 +15,7 @@ function Index({ children }) {
 
   return (
     <React.Fragment>
+      <Notification />
       <NavbarComposition trigger={toggle} cartLength={cart.length} />
       <CartWithBackground trigger={toggle} show={showcart} cart={cart} />
       {children}

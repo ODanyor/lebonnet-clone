@@ -12,7 +12,6 @@ const NotFound = lazy(() => import("pages/404.page"))
 
 export const Routes = () => {
   useIsAuthenticated()
-
   return (
     <Switch>
       <Route

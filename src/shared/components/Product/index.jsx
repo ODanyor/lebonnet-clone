@@ -1,15 +1,29 @@
 import React, { useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { addToCart } from "store/actions/productActions"
 import { Product } from "./styles"
 
 // Components
 import { Link } from "shared/components"
+import { useHistory } from "react-router-dom"
 
 const Index = ({ product, img }) => {
+  const history = useHistory()
+  const dispatchToStore = useDispatch()
+  const authenticated = useSelector((state) => state.user.authenticated)
   const [mainImg, setMainImg] = useState(img)
 
   const image = new Image()
   image.src = product.product.photo_1
   image.onload = () => setMainImg(image.src)
+
+  const addButtonHandle = () => {
+    if (authenticated) {
+      dispatchToStore(addToCart({ id: product.id, quantity: 1 }))
+    } else {
+      history.push("/account")
+    }
+  }
 
   return (
     <Product img={mainImg}>
@@ -21,7 +35,9 @@ const Index = ({ product, img }) => {
           height="auto"
         />
       </Link>
-      <button>Add to cart €{product.product.price.toFixed(2)}</button>
+      <button onClick={addButtonHandle}>
+        Add to cart €{product.product.price.toFixed(2)}
+      </button>
     </Product>
   )
 }

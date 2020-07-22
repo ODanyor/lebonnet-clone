@@ -35,7 +35,7 @@ const Controllers = ({ price, addToCart }) => {
 
   const addButtonHandle = () => {
     if (authenticated) {
-      dispatchToStore(addToCart({ productId: id, quantity: state.count }))
+      dispatchToStore(addToCart({ id, quantity: state.count }))
     } else {
       history.push("/account")
     }

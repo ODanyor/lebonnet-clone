@@ -1,8 +1,8 @@
 import React from "react"
 import { Link } from "react-router-dom"
 
-const ProtectedRoute = () => {
-  return <div></div>
+const ProtectedRoute = ({ to, children }) => {
+  return <Link to={to}>{children}</Link>
 }
 
 export default ProtectedRoute

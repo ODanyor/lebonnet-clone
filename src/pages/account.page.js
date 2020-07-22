@@ -1,10 +1,11 @@
 import React, { useState } from "react"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { useHistory } from "react-router-dom"
 import { signIn, signUp } from "store/actions/userActions"
 import { Banners } from "shared/compositions"
+import { Box } from "shared/containers"
 import { Helmet } from "react-helmet"
-import { Form } from "shared/components"
+import { Form, Title, Text } from "shared/components"
 import { credentialValidation } from "shared/utils/validation"
 
 import boy from "shared/assets/images/boy.jpg"
@@ -48,6 +49,7 @@ const forms = {
 }
 
 function Index() {
+  const authenticated = useSelector((state) => state.user.authenticated)
   const [validationErrors, setValidationErrors] = useState({})
 
   const history = useHistory()
@@ -78,27 +80,47 @@ function Index() {
         <title>Account</title>
       </Helmet>
 
-      <Banners
-        left={
-          <Form
-            img={boy}
-            formitems={forms.loginForm}
-            formSubmit={login}
-            button="Log in"
-            colored={true}
-            validationErrors={validationErrors.login}
-          />
-        }
-        right={
-          <Form
-            formitems={forms.registerForm}
-            formSubmit={register}
-            button="Create an account"
-            colored={false}
-            validationErrors={validationErrors.register}
-          />
-        }
-      />
+      {authenticated ? (
+        <Banners
+          left={
+            <Box margin="auto">
+              <Title colored={true}>Welcome</Title>
+            </Box>
+          }
+          right={
+            <Box margin="auto" padding="25px">
+              <Text center={true}>
+                Dit is uw account waarmee u uw recente aankoop activiteiten kunt
+                controleren en uw persoonlijke gegevens kunt bijwerken.
+                Selecteer dit tabblad hieronder om informatie te bekijken of te
+                bewerken.
+              </Text>
+            </Box>
+          }
+        />
+      ) : (
+        <Banners
+          left={
+            <Form
+              img={boy}
+              formitems={forms.loginForm}
+              formSubmit={login}
+              button="Log in"
+              colored={true}
+              validationErrors={validationErrors.login}
+            />
+          }
+          right={
+            <Form
+              formitems={forms.registerForm}
+              formSubmit={register}
+              button="Create an account"
+              colored={false}
+              validationErrors={validationErrors.register}
+            />
+          }
+        />
+      )}
     </React.Fragment>
   )
 }
