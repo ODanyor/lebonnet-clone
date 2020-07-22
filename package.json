@@ -1,6 +1,6 @@
 {
   "name": "lebonnet-clone-modified",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "dependencies": {
     "@chakra-ui/core": "^0.8.0",
@@ -46,5 +46,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "description": "LeBonnet - Optimized code",
+  "main": "index.js",
+  "repository": "https://github.com/ODanyor/lebonnet-clone.git",
+  "author": "ODanyor <dubashit@bk.ru>",
+  "license": "MIT"
 }
