@@ -1,15 +1,11 @@
 import React from "react"
 
-// Images
-import slide_img_1 from "shared/assets/images/slide_img_1.jpg"
-import slide_img_2 from "shared/assets/images/slide_img_2.jpg"
-
-// Components
 import { Helmet } from "react-helmet"
 import { Slider, BannerHand, BannerBaby } from "shared/components"
-
-// Compositions
 import { Banners } from "shared/compositions"
+
+import slide_img_1 from "shared/assets/images/slide_img_1.jpg"
+import slide_img_2 from "shared/assets/images/slide_img_2.jpg"
 
 const slides = [
   { img: slide_img_1, title: "Winter is coming" },

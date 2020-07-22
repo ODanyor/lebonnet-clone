@@ -1,6 +1,4 @@
 import React from "react"
-
-// Components
 import { Footer, Copyright } from "shared/components"
 
 const index = () => {

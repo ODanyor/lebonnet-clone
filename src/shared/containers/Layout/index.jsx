@@ -1,12 +1,6 @@
 import React, { useState } from "react"
-
-// Hooks
 import { useSelector } from "react-redux"
-
-// Components
 import { ForNewsletter } from "shared/components"
-
-// Compositions
 import {
   NavbarComposition,
   CartWithBackground,

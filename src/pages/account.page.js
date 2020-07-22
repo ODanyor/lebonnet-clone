@@ -2,19 +2,12 @@ import React, { useState } from "react"
 import { useDispatch } from "react-redux"
 import { useHistory } from "react-router-dom"
 import { signIn, signUp } from "store/actions/userActions"
-
-// Compositions
 import { Banners } from "shared/compositions"
-
-// Components
 import { Helmet } from "react-helmet"
 import { Form } from "shared/components"
-
-// Images
-import boy from "shared/assets/images/boy.jpg"
-
-// Uitls
 import { credentialValidation } from "shared/utils/validation"
+
+import boy from "shared/assets/images/boy.jpg"
 
 const forms = {
   loginForm: {

@@ -1,7 +1,5 @@
 import React from "react"
 import { Product } from "./styles"
-
-// Components
 import { Illustrations, Details } from "shared/components"
 
 const index = (props) => {

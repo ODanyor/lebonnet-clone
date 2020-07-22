@@ -1,13 +1,7 @@
 import React from "react"
 import { Products } from "./styles"
-
-// HOC
 import { withLoading } from "shared/hoc/withLoading"
-
-// Components
 import { Product } from "shared/components"
-
-// Modules
 import Skeleton from "./Skeleton"
 
 const index = ({ products, category, ...rest }) => (

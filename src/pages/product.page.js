@@ -1,15 +1,9 @@
 import React, { useEffect, useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { useParams } from "react-router-dom"
-
-// Redux
-import { getProduct, addToCart } from "store/actions/productActions"
-
-// Components
 import { Helmet } from "react-helmet"
-
-// Containers
 import { Product } from "shared/containers"
+import { getProduct, addToCart } from "store/actions/productActions"
 
 function Index() {
   const { id } = useParams()

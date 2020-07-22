@@ -1,24 +1,15 @@
 import React, { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-
-// Components
 import { Helmet } from "react-helmet"
 import { Title } from "shared/components"
-
-// Compositions
 import { WithScrollbar } from "shared/compositions"
-
-// Containers
 import { Products } from "shared/containers"
+import { getProducts } from "store/actions/productActions"
 
-// Images
 import beanie from "shared/assets/images/loaders/beanie.jpg"
 import scarve from "shared/assets/images/loaders/scarve.jpg"
 import gloves from "shared/assets/images/loaders/gloves.jpg"
 import exclusive from "shared/assets/images/loaders/exclusive.jpg"
-
-// Redux
-import { getProducts } from "store/actions/productActions"
 
 const sectionList = [
   { category: "beanies", img: beanie },

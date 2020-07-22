@@ -4,7 +4,6 @@ import { Spinner } from "shared/components"
 import * as ROUTE from "shared/constants/routes"
 import Auth from "Auth"
 
-// Pages
 const Home = lazy(() => import("pages/home.page"))
 const Account = lazy(() => import("pages/account.page"))
 const Products = lazy(() => import("pages/products.page"))
