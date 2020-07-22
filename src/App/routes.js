@@ -2,7 +2,7 @@ import React, { lazy, Suspense } from "react"
 import { Switch, Route } from "react-router-dom"
 import { Spinner } from "shared/components"
 import * as ROUTE from "shared/constants/routes"
-import Auth from "Auth"
+import { useIsAuthenticated } from "shared/hooks"
 
 const Home = lazy(() => import("pages/home.page"))
 const Account = lazy(() => import("pages/account.page"))
@@ -11,10 +11,10 @@ const Product = lazy(() => import("pages/product.page"))
 const NotFound = lazy(() => import("pages/404.page"))
 
 export const Routes = () => {
+  useIsAuthenticated()
+
   return (
     <Switch>
-      <Route exact path={ROUTE.AUTH} component={Auth} />
-
       <Route
         exact
         path={ROUTE.HOME}
