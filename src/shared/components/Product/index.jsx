@@ -10,7 +10,9 @@ import { useHistory } from "react-router-dom"
 const Index = ({ product, img }) => {
   const history = useHistory()
   const dispatchToStore = useDispatch()
-  const authenticated = useSelector((state) => state.user.authenticated)
+  const store = useSelector((state) => state)
+  const authenticated = store.user.authenticated
+  const requested = store.products.requested
   const [mainImg, setMainImg] = useState(img)
 
   const image = new Image()
@@ -35,8 +37,10 @@ const Index = ({ product, img }) => {
           height="auto"
         />
       </Link>
-      <button onClick={addButtonHandle}>
-        Add to cart €{product.product.price.toFixed(2)}
+      <button onClick={addButtonHandle} disabled={requested}>
+        {requested
+          ? "Loading ..."
+          : `Add to cart €${product.product.price.toFixed(2)}`}
       </button>
     </Product>
   )

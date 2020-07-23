@@ -30,7 +30,9 @@ const Description = ({ description }) => (
 const Controllers = ({ price, addToCart }) => {
   const { id } = useParams()
   const history = useHistory()
-  const authenticated = useSelector((state) => state.user.authenticated)
+  const store = useSelector((state) => state)
+  const authenticated = store.user.authenticated
+  const requested = store.products.requested
   const dispatchToStore = useDispatch()
 
   const addButtonHandle = () => {
@@ -71,8 +73,10 @@ const Controllers = ({ price, addToCart }) => {
           </Text>
         </Button>
       </CounterButtons>
-      <AddButton onClick={addButtonHandle}>
-        Add to cart €{(state.count * price).toFixed(2)}
+      <AddButton onClick={addButtonHandle} disabled={requested}>
+        {requested
+          ? "Loading ..."
+          : `Add to cart €${(state.count * price).toFixed(2)}`}
       </AddButton>
     </Buttons>
   )

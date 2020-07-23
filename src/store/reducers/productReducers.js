@@ -4,10 +4,12 @@ import {
   SET_PRODUCTS,
   SET_CART,
   DELETE_PRODUCT,
+  SET_REQUESTED,
 } from "../types"
 
 const initialState = {
   loading: false,
+  requested: false,
   products: [],
   errors: {},
   cart: [
@@ -44,6 +46,11 @@ const productReducers = (state = initialState, action) => {
         ...state,
         cart: action.payload,
         loading: false,
+      }
+    case SET_REQUESTED:
+      return {
+        ...state,
+        requested: !state.requested,
       }
     default:
       return state

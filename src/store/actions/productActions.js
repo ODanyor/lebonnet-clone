@@ -4,6 +4,7 @@ import {
   SET_PRODUCTS,
   SET_CART,
   SET_NOTIFICATION,
+  SET_REQUESTED,
 } from "../types"
 import axios from "shared/utils/api"
 import store from "../index"
@@ -45,6 +46,7 @@ export const getProduct = (id) => (dispatch) => {
 }
 
 export const addToCart = (product) => (dispatch) => {
+  dispatch({ type: SET_REQUESTED })
   const { cart } = store.getState().products
   const foundItem = cart.find((item) => item.productId === product.id)
   axios
@@ -60,7 +62,10 @@ export const addToCart = (product) => (dispatch) => {
         payload: res.data,
       })
     )
-    .then(() => dispatch(getCart()))
+    .then(() => {
+      dispatch(getCart())
+      dispatch({ type: SET_REQUESTED })
+    })
     .catch((err) =>
       dispatch({
         type: SET_ERRORS,

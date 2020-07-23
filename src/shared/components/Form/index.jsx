@@ -1,13 +1,8 @@
 import React from "react"
 import { FormContainer, Form, Message } from "./styles"
-
-// Hooks
 import { useForm } from "react-hook-form"
-
-// Components
 import { Title } from "shared/components"
-
-// Modules
+import { useSelector } from "react-redux"
 import FormInput from "./FormInput"
 import FormButton from "./FormButton"
 
@@ -24,6 +19,8 @@ const Index = (props) => {
   const { register, setValue, errors, handleSubmit } = useForm()
 
   const submit = (credentials) => formSubmit(credentials)
+
+  const loading = useSelector((state) => state.user.loading)
 
   return (
     <FormContainer img={img}>
@@ -49,8 +46,8 @@ const Index = (props) => {
           Object.keys(validationErrors).map((error, index) => (
             <Message key={index}>{validationErrors[error]}</Message>
           ))}
-        <FormButton colored={colored} type="submit">
-          {button}
+        <FormButton colored={colored} type="submit" disabled={loading}>
+          {loading ? "Loading ..." : button}
         </FormButton>
       </Form>
     </FormContainer>
