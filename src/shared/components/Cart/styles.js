@@ -24,4 +24,25 @@ export const DistanceBetween = styled.div`
 export const ItemsContainer = styled.div`
   border-top: 1px solid ${color.gray};
   padding: 20px 50px;
+  height: 100%;
+  overflow-y: scroll;
+`
+
+export const CartItemContainer = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 240px;
+`
+export const ControllerContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`
+
+export const SquareButton = styled.div`
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: ${color.gray};
 `

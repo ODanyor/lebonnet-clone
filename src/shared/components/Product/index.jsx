@@ -10,10 +10,11 @@ import { useHistory } from "react-router-dom"
 const Index = ({ product, img }) => {
   const history = useHistory()
   const dispatchToStore = useDispatch()
+  const [mainImg, setMainImg] = useState(img)
   const store = useSelector((state) => state)
+
   const authenticated = store.user.authenticated
   const requested = store.products.requested
-  const [mainImg, setMainImg] = useState(img)
 
   const image = new Image()
   image.src = product.product.photo_1

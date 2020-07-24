@@ -102,28 +102,18 @@ const Info = ({ info }) => (
 )
 
 const index = (props) => {
-  const {
-    name,
-    price,
-    description,
-    fabric,
-    fit,
-    size,
-    treatment,
-    addToCart,
-  } = props
   const productInfo = [
-    { title: "Fabric", value: fabric },
-    { title: "Fit", value: fit },
-    { title: "Size", value: size },
-    { title: "Treatment", value: treatment },
+    { title: "Fabric", value: props.fabric },
+    { title: "Fit", value: props.fit },
+    { title: "Size", value: props.size },
+    { title: "Treatment", value: props.treatment },
   ]
 
   return (
     <Details>
-      <TitleNamePrice name={name} price={price} />
-      <Description description={description} />
-      <Controllers price={price} addToCart={addToCart} />
+      <TitleNamePrice name={props.name} price={props.price} />
+      <Description description={props.description} />
+      <Controllers price={props.price} addToCart={props.addToCart} />
       <Info info={productInfo} />
     </Details>
   )
