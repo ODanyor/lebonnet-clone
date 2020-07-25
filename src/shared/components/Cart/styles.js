@@ -32,6 +32,7 @@ export const CartItemContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 240px;
 `
+
 export const ControllerContainer = styled.div`
   display: flex;
   align-items: center;

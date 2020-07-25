@@ -2,7 +2,7 @@ import { useEffect } from "react"
 import { useDispatch } from "react-redux"
 import { useHistory } from "react-router-dom"
 import { logOut } from "store/actions/userActions"
-import { getCart } from "store/actions/productActions"
+import { getCartItems } from "store/actions/productActions"
 import { getStoredAuthToken } from "shared/utils/authToken"
 import jwtDecode from "jwt-decode"
 
@@ -18,7 +18,7 @@ export const useIsAuthenticated = () => {
 
       if (decodedToken.exp * 1000 < Date.now()) dispatch(logOut(history))
       else {
-        dispatch(getCart())
+        dispatch(getCartItems())
         dispatch({ type: "SET_AUTHENTICATED" })
       }
     }

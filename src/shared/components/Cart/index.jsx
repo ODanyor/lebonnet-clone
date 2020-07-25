@@ -1,6 +1,12 @@
-import React, { useEffect, useState, useReducer } from "react"
+import React, { useEffect, useState } from "react"
 import { useDispatch } from "react-redux"
-import { getProducts } from "store/actions/productActions"
+import {
+  getProducts,
+  deleteProductFromCart,
+} from "store/actions/productActions"
+import { Title, Text, Button } from "shared/components"
+import deleteIcon from "shared/assets/icons/delete.png"
+
 import {
   Cart,
   DistanceBetween,
@@ -9,9 +15,6 @@ import {
   ControllerContainer,
   SquareButton,
 } from "./styles"
-import { Title, Text, Button } from "shared/components"
-
-import deleteIcon from "shared/assets/icons/delete.png"
 
 const CartHead = ({ trigger }) => (
   <DistanceBetween padding="25px 0">
@@ -26,18 +29,22 @@ const CartHead = ({ trigger }) => (
   </DistanceBetween>
 )
 
-const Controller = ({ quantity }) => {
+const Controller = ({ show, quantity, id }) => {
   const [count, setCount] = useState(null)
-  const [state, dispatch] = useReducer(function (state, action) {
-    switch (action.type) {
-      case "increment":
-        return setCount((prevState) => prevState + 1)
-      case "decrement":
-        return setCount((prevState) => prevState - 1)
-      default:
-        throw new Error()
+  // const dispatch = useDispatch()
+
+  const increment = () => {
+    if (count < 20) {
+      setCount((prevState) => {
+        return prevState + 1
+      })
     }
-  }, count)
+  }
+  const decrement = () => {
+    if (count > 1) {
+      setCount((prevState) => prevState - 1)
+    }
+  }
 
   useEffect(() => {
     setCount(quantity)
@@ -45,15 +52,15 @@ const Controller = ({ quantity }) => {
 
   return (
     <ControllerContainer>
-      <Text>Quantity: </Text>
+      <Text uppercase={true}>Quantity: </Text>
       <div>
-        <Button>
+        <Button onClick={increment}>
           <SquareButton>+</SquareButton>
         </Button>
         <Text margin="5px 0" center={true}>
           {count}
         </Text>
-        <Button>
+        <Button onClick={decrement}>
           <SquareButton>-</SquareButton>
         </Button>
       </div>
@@ -61,36 +68,38 @@ const Controller = ({ quantity }) => {
   )
 }
 
-const CartItem = ({ item }) => {
+const CartItem = ({ item, show }) => {
+  const dispatch = useDispatch()
   return (
     <CartItemContainer>
       <img alt="img" src={item.product.photo_1} width="100%" height="auto" />
       <div>
-        <Button>
+        <Button onClick={() => dispatch(deleteProductFromCart(item.id))}>
           <img alt="trash" src={deleteIcon} width="25px" height="auto" />
         </Button>
-        <Text>{item.product.name.split(" - ")[0]}</Text>
+        <Text uppercase={true} bold={true} margin="1rem 0">
+          {item.product.name.split(" - ")[0]}
+        </Text>
         <Text>€{item.product.price.toFixed(2)}</Text>
-        <Text>Color: {item.product.name.split(" - ")[1]}</Text>
-        <Controller quantity={item.quantity} />
+        <Text uppercase={true} bold={true} size={11}>
+          Color: {item.product.name.split(" - ")[1]}
+        </Text>
+        <Controller show={show} quantity={item.quantity} id={item.id} />
       </div>
     </CartItemContainer>
   )
 }
 
-const CartItems = ({ cart, products }) => {
+const CartItems = ({ cart, products, show }) => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    if (products.length <= 1) {
-      dispatch(getProducts())
-    }
+    if (products.length <= 1) dispatch(getProducts())
     // eslint-disable-next-line
   }, [products])
 
-  return products.length <= 1 ? (
-    <p>Loading ...</p>
-  ) : (
+  return (
+    products.length > 1 &&
     cart.map((item, index) => {
       const foundItem = products.find(
         (product) => product.id === item.productId
@@ -98,6 +107,7 @@ const CartItems = ({ cart, products }) => {
       return (
         <CartItem
           key={index}
+          show={show}
           item={{ ...foundItem, quantity: item.quantity }}
         />
       )
@@ -110,7 +120,7 @@ const Index = ({ show, trigger, ...rest }) => {
     <Cart show={show}>
       <CartHead trigger={trigger} />
       <ItemsContainer>
-        <CartItems {...rest} />
+        <CartItems show={show} {...rest} />
       </ItemsContainer>
     </Cart>
   )

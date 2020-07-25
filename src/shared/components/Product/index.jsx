@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { addToCart } from "store/actions/productActions"
+import { addProductToCart } from "store/actions/productActions"
 import { Product } from "./styles"
 
 // Components
@@ -9,7 +9,7 @@ import { useHistory } from "react-router-dom"
 
 const Index = ({ product, img }) => {
   const history = useHistory()
-  const dispatchToStore = useDispatch()
+  const dispatch = useDispatch()
   const [mainImg, setMainImg] = useState(img)
   const store = useSelector((state) => state)
 
@@ -22,7 +22,7 @@ const Index = ({ product, img }) => {
 
   const addButtonHandle = () => {
     if (authenticated) {
-      dispatchToStore(addToCart({ id: product.id, quantity: 1 }))
+      dispatch(addProductToCart({ id: product.id, quantity: 1 }))
     } else {
       history.push("/account")
     }

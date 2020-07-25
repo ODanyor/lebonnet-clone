@@ -2,22 +2,20 @@ import React, { useReducer } from "react"
 import { useParams, useHistory } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux"
 import { Details, Buttons, CounterButtons, AddButton } from "./styles"
-
-// Components
 import { Title, Text, Button } from "shared/components"
-
-// Containers
 import { Box } from "shared/containers"
 
-const TitleNamePrice = ({ name, price }) => (
-  <Box>
-    <Title size={55} colored={true}>
-      {name.split(" - ")[0]}
-    </Title>
-    <Text>{name}</Text>
-    <Text size={25}>€{price.toFixed(2)}</Text>
-  </Box>
-)
+const TitleNamePrice = ({ name, price }) => {
+  return (
+    <Box>
+      <Title size={55} colored={true}>
+        {name.split(" - ")[0]}
+      </Title>
+      <Text>{name}</Text>
+      <Text size={25}>€{price.toFixed(2)}</Text>
+    </Box>
+  )
+}
 
 const Description = ({ description }) => (
   <Box padding="20px 0">

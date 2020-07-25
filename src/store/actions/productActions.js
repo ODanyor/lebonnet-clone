@@ -1,10 +1,11 @@
 import {
-  SET_ERRORS,
   LOADING_DATA,
-  SET_PRODUCTS,
-  SET_CART,
-  SET_NOTIFICATION,
   SET_REQUESTED,
+  SET_PRODUCTS,
+  SET_NOTIFICATION,
+  SET_CART_ITEMS,
+  ADD_CART_ITEM,
+  DELETE_CART_ITEM,
 } from "../types"
 import axios from "shared/utils/api"
 import store from "../index"
@@ -19,12 +20,7 @@ export const getProducts = () => (dispatch) => {
         payload: res.data,
       })
     )
-    .catch((err) =>
-      dispatch({
-        type: SET_ERRORS,
-        payload: err,
-      })
-    )
+    .catch((err) => console.log(err))
 }
 
 export const getProduct = (id) => (dispatch) => {
@@ -37,15 +33,10 @@ export const getProduct = (id) => (dispatch) => {
         payload: [{ id: id, product: res.data }],
       })
     )
-    .catch((err) =>
-      dispatch({
-        type: SET_ERRORS,
-        payload: err,
-      })
-    )
+    .catch((err) => console.log(err))
 }
 
-export const addToCart = (product) => (dispatch) => {
+export const addProductToCart = (product) => (dispatch) => {
   dispatch({ type: SET_REQUESTED })
   const { cart } = store.getState().products
   const foundItem = cart.find((item) => item.productId === product.id)
@@ -63,18 +54,16 @@ export const addToCart = (product) => (dispatch) => {
       })
     )
     .then(() => {
-      dispatch(getCart())
+      dispatch({
+        type: ADD_CART_ITEM,
+        payload: { productId: product.id, quantity: product.quantity },
+      })
       dispatch({ type: SET_REQUESTED })
     })
-    .catch((err) =>
-      dispatch({
-        type: SET_ERRORS,
-        payload: err.response.data,
-      })
-    )
+    .catch((err) => console.log(err))
 }
 
-export const deleteProduct = (productId) => (dispatch) => {
+export const deleteProductFromCart = (productId) => (dispatch) => {
   axios
     .delete(`/users/cart/${productId}`)
     .then((res) =>
@@ -83,13 +72,8 @@ export const deleteProduct = (productId) => (dispatch) => {
         payload: res.data,
       })
     )
-    .then(() => dispatch(getCart()))
-    .catch((err) =>
-      dispatch({
-        type: SET_ERRORS,
-        payload: err.code,
-      })
-    )
+    .then(() => dispatch({ type: DELETE_CART_ITEM, payload: productId }))
+    .catch((err) => console.log(err))
 }
 
 export const clearMessage = () => (dispatch) => {
@@ -99,12 +83,12 @@ export const clearMessage = () => (dispatch) => {
   })
 }
 
-export const getCart = () => (dispatch) => {
+export const getCartItems = () => (dispatch) => {
   axios
     .get("/users/cart")
     .then((res) =>
       dispatch({
-        type: SET_CART,
+        type: SET_CART_ITEMS,
         payload: res.data,
       })
     )

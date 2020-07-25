@@ -1,12 +1,7 @@
-import {
-  SET_ERRORS,
-  LOADING_USER,
-  SET_AUTHENTICATED,
-  SET_UNAUTHENTICATED,
-} from "../types"
 import axios from "shared/utils/api"
-import { getCart } from "./productActions"
+import { getCartItems } from "./productActions"
 import { storeAuthToken, removeStoredAuthToken } from "shared/utils/authToken"
+import { LOADING_USER, SET_AUTHENTICATED, SET_UNAUTHENTICATED } from "../types"
 
 export const signIn = (credentials, history) => (dispatch) => {
   dispatch({ type: LOADING_USER })
@@ -17,15 +12,10 @@ export const signIn = (credentials, history) => (dispatch) => {
       history.push("/products")
     })
     .then(() => {
-      dispatch(getCart())
+      dispatch(getCartItems())
       dispatch({ type: SET_AUTHENTICATED })
     })
-    .catch((err) => {
-      dispatch({
-        type: SET_ERRORS,
-        payload: err.response.data,
-      })
-    })
+    .catch((err) => console.log(err))
 }
 
 export const signUp = (credentials, history) => (dispatch) => {
@@ -37,15 +27,10 @@ export const signUp = (credentials, history) => (dispatch) => {
       history.push("/products")
     })
     .then(() => {
-      dispatch(getCart())
+      dispatch(getCartItems())
       dispatch({ type: SET_AUTHENTICATED })
     })
-    .catch((err) => {
-      dispatch({
-        type: SET_ERRORS,
-        payload: err.response.data,
-      })
-    })
+    .catch((err) => console.log(err))
 }
 
 export const logOut = (history) => (dispatch) => {
