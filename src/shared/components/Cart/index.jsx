@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react"
 import { useDispatch } from "react-redux"
 import {
   getProducts,
+  addProductToCart,
   deleteProductFromCart,
 } from "store/actions/productActions"
 import { Title, Text, Button } from "shared/components"
@@ -14,6 +15,8 @@ import {
   CartItemContainer,
   ControllerContainer,
   SquareButton,
+  Total,
+  FinalButton,
 } from "./styles"
 
 const CartHead = ({ trigger }) => (
@@ -31,18 +34,16 @@ const CartHead = ({ trigger }) => (
 
 const Controller = ({ show, quantity, id }) => {
   const [count, setCount] = useState(null)
-  // const dispatch = useDispatch()
+  const dispatch = useDispatch()
 
   const increment = () => {
     if (count < 20) {
-      setCount((prevState) => {
-        return prevState + 1
-      })
+      dispatch(addProductToCart({ id, quantity: 1 }))
     }
   }
   const decrement = () => {
     if (count > 1) {
-      setCount((prevState) => prevState - 1)
+      dispatch(addProductToCart({ id, quantity: -1 }))
     }
   }
 
@@ -115,13 +116,40 @@ const CartItems = ({ cart, products, show }) => {
   )
 }
 
-const Index = ({ show, trigger, ...rest }) => {
+const Index = ({ show, trigger, cart, products }) => {
+  const [totalPrice, setTotalPrice] = useState(0)
+
+  useEffect(() => {
+    let price = 0
+    if (products.length) {
+      cart.map((item) => {
+        const foundItem = products.find(
+          (product) => product.id === item.productId
+        )
+        return (price += foundItem.product.price * item.quantity)
+      })
+      setTotalPrice(price)
+    }
+    // eslint-disable-next-line
+  }, [cart])
+
   return (
     <Cart show={show}>
       <CartHead trigger={trigger} />
       <ItemsContainer>
-        <CartItems show={show} {...rest} />
+        <CartItems show={show} cart={cart} products={products} />
       </ItemsContainer>
+      <Total>
+        <Text uppercase={true} bold={true} size={17}>
+          Total
+        </Text>
+        <Text bold={true} size={17}>
+          €{totalPrice.toFixed(2)}
+        </Text>
+      </Total>
+      <Button>
+        <FinalButton>Continue ordering</FinalButton>
+      </Button>
     </Cart>
   )
 }

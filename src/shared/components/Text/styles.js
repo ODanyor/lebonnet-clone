@@ -10,6 +10,6 @@ export const Text = styled.div`
   ${(props) => (props.uppercase ? "text-transform: uppercase" : null)};
   ${(props) =>
     props.center
-      ? "display: flex; align-items: center; justify-content: center"
+      ? "display: flex; height: 100%; width: 100%; align-items: center; justify-content: center"
       : null};
 `

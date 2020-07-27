@@ -36,6 +36,18 @@ export const getProduct = (id) => (dispatch) => {
     .catch((err) => console.log(err))
 }
 
+export const getCartItems = () => (dispatch) => {
+  axios
+    .get("/users/cart")
+    .then((res) =>
+      dispatch({
+        type: SET_CART_ITEMS,
+        payload: res.data,
+      })
+    )
+    .catch((err) => console.log(err.code))
+}
+
 export const addProductToCart = (product) => (dispatch) => {
   dispatch({ type: SET_REQUESTED })
   const { cart } = store.getState().products
@@ -79,18 +91,6 @@ export const deleteProductFromCart = (productId) => (dispatch) => {
 export const clearMessage = () => (dispatch) => {
   dispatch({
     type: SET_NOTIFICATION,
-    payload: { message: "" },
+    payload: { message: null },
   })
-}
-
-export const getCartItems = () => (dispatch) => {
-  axios
-    .get("/users/cart")
-    .then((res) =>
-      dispatch({
-        type: SET_CART_ITEMS,
-        payload: res.data,
-      })
-    )
-    .catch((err) => console.log(err.code))
 }

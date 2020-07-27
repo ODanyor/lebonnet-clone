@@ -11,5 +11,5 @@ export const Notification = styled.div`
   background-color: ${(props) => (props.added ? color.green : color.red)};
   transition: transform var(--transition);
   transform: translateY(-100%);
-  z-index: 1100;
+  z-index: 2000;
 `

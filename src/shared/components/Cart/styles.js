@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { color } from "shared/utils/styles"
+import { color, font } from "shared/utils/styles"
 
 export const Cart = styled.div`
   position: fixed;
@@ -8,6 +8,8 @@ export const Cart = styled.div`
   right: 0;
   width: 520px;
   height: 100%;
+  display: flex;
+  flex-direction: column;
   background-color: ${color.white};
   transition: transform var(--transition);
   transform: translateX(${(props) => (!props.show ? "100%" : "0")});
@@ -46,4 +48,28 @@ export const SquareButton = styled.div`
   align-items: center;
   justify-content: center;
   background-color: ${color.gray};
+`
+
+export const Total = styled.div`
+  display: flex;
+  justify-content: space-between;
+`
+
+export const FinalButton = styled.div`
+  width: 100%;
+  height: 70px;
+  background-color: ${color.white};
+  border: 1px solid ${color.red};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: ${color.red};
+  text-transform: uppercase;
+  transition: all var(--transition);
+  ${font.bold};
+  ${font.size(17)};
+  &:hover {
+    color: ${color.white};
+    background-color: ${color.red};
+  }
 `
