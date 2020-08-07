@@ -1,20 +1,20 @@
-import React, { useRef } from "react"
-import { Navbar, NavbarLinks, NavbarLink, NavbarLinkUnderline } from "./styles"
+import React, { useRef } from 'react'
+import { Navbar, NavbarLinks, NavbarLink, NavbarLinkUnderline } from './styles'
 
 // Images
-import logo from "shared/assets/logo.svg"
+import logo from 'shared/assets/logo.svg'
 
 // Components
-import { Link, Button } from "shared/components"
+import { Link, Button } from 'shared/components'
 
 // Navigation links
 const leftLinks = [
-  { to: "/products#beanies", content: "Beanies" },
-  { to: "/products#scarves", content: "Scarves" },
-  { to: "/products#gloves", content: "Gloves" },
-  { to: "/products#exclusives", content: "Exclusives" },
+  { to: '/products#beanies', content: 'Beanies' },
+  { to: '/products#scarves', content: 'Scarves' },
+  { to: '/products#gloves', content: 'Gloves' },
+  { to: '/products#exclusives', content: 'Exclusives' },
 ]
-const rightLinks = [{ to: "/account", content: "Account" }]
+const rightLinks = [{ to: '/account', content: 'Account' }]
 
 const LinkItem = ({ link }) => {
   const { to, content } = link
@@ -23,8 +23,8 @@ const LinkItem = ({ link }) => {
   return (
     <Link to={to}>
       <NavbarLink
-        onMouseOver={() => (linkRef.current.style.width = "100%")}
-        onMouseLeave={() => (linkRef.current.style.width = "0%")}
+        onMouseOver={() => (linkRef.current.style.width = '100%')}
+        onMouseLeave={() => (linkRef.current.style.width = '0%')}
       >
         {content}
         <NavbarLinkUnderline ref={linkRef} />
@@ -33,8 +33,9 @@ const LinkItem = ({ link }) => {
   )
 }
 
-const LinkItems = ({ links }) =>
-  links.map((link, index) => <LinkItem key={index} link={link} />)
+const LinkItems = ({ links }) => {
+  return links.map((link, index) => <LinkItem key={index} link={link} />)
+}
 
 const index = ({ trigger, cartLength }) => {
   return (
@@ -42,9 +43,9 @@ const index = ({ trigger, cartLength }) => {
       <NavbarLinks>
         <LinkItems links={leftLinks} />
       </NavbarLinks>
-      <Link to="/">
+      <Link to='/'>
         <NavbarLinks>
-          <img alt="logo" src={logo} />
+          <img alt='logo' src={logo} />
         </NavbarLinks>
       </Link>
       <NavbarLinks>
@@ -56,6 +57,6 @@ const index = ({ trigger, cartLength }) => {
     </Navbar>
   )
 }
-index.displayName = "Navbar"
+index.displayName = 'Navbar'
 
 export default index

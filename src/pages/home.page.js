@@ -39,7 +39,7 @@ function ForPC() {
 
 function ForMobile() {
   return (
-    <div>
+    <div style={{ paddingBottom: '48px' }}>
       {banners.map((banner, index) => (
         <Banner key={index} banner={banner} />
       ))}

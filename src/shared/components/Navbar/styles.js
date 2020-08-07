@@ -1,5 +1,5 @@
-import styled from "styled-components"
-import { color, font } from "shared/utils/styles"
+import styled from 'styled-components'
+import { color, font } from 'shared/utils/styles'
 
 export const Navbar = styled.div`
   padding: 10px 0;
