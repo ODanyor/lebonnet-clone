@@ -3,6 +3,6 @@
 - [ ] Clearify the redux part
 - [x] Cart items
 - [x] Total price
-- [ ] Fix the cart update item feature
-- [ ] Code review from and make changes if needed
+- [x] Fix the cart update item feature
 - [ ] Make the app responsive
+- [ ] Code review from and make changes if needed

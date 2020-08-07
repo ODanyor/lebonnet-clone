@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react"
-import { useDispatch } from "react-redux"
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import {
   getProducts,
   addProductToCart,
   deleteProductFromCart,
-} from "store/actions/productActions"
-import { Title, Text, Button } from "shared/components"
-import deleteIcon from "shared/assets/icons/delete.png"
+} from 'store/actions/productActions'
+import { Title, Text, Button } from 'shared/components'
+import deleteIcon from 'shared/assets/icons/delete.png'
 
 import {
   Cart,
@@ -17,10 +17,10 @@ import {
   SquareButton,
   Total,
   FinalButton,
-} from "./styles"
+} from './styles'
 
 const CartHead = ({ trigger }) => (
-  <DistanceBetween padding="25px 0">
+  <DistanceBetween padding='25px 0'>
     <Title colored={true} size={45}>
       Cart
     </Title>
@@ -32,7 +32,7 @@ const CartHead = ({ trigger }) => (
   </DistanceBetween>
 )
 
-const Controller = ({ show, quantity, id }) => {
+const Controller = ({ quantity, id, requested }) => {
   const [count, setCount] = useState(null)
   const dispatch = useDispatch()
 
@@ -55,13 +55,13 @@ const Controller = ({ show, quantity, id }) => {
     <ControllerContainer>
       <Text uppercase={true}>Quantity: </Text>
       <div>
-        <Button onClick={increment}>
+        <Button onClick={increment} disabled={requested}>
           <SquareButton>+</SquareButton>
         </Button>
-        <Text margin="5px 0" center={true}>
+        <Text margin='5px 0' center={true}>
           {count}
         </Text>
-        <Button onClick={decrement}>
+        <Button onClick={decrement} disabled={requested}>
           <SquareButton>-</SquareButton>
         </Button>
       </div>
@@ -69,33 +69,46 @@ const Controller = ({ show, quantity, id }) => {
   )
 }
 
-const CartItem = ({ item, show }) => {
+const CartItem = ({ item }) => {
+  const requested = useSelector((state) => state.products.requested)
   const dispatch = useDispatch()
+
   return (
     <CartItemContainer>
-      <img alt="img" src={item.product.photo_1} width="100%" height="auto" />
+      <img alt='img' src={item.product.photo_1} width='100%' height='auto' />
       <div>
-        <Button onClick={() => dispatch(deleteProductFromCart(item.id))}>
-          <img alt="trash" src={deleteIcon} width="25px" height="auto" />
+        <Button
+          onClick={() => dispatch(deleteProductFromCart(item.id))}
+          disabled={requested}
+        >
+          <img alt='trash' src={deleteIcon} width='25px' height='auto' />
         </Button>
-        <Text uppercase={true} bold={true} margin="1rem 0">
-          {item.product.name.split(" - ")[0]}
+        <Text uppercase={true} bold={true} margin='1rem 0'>
+          {item.product.name.split(' - ')[0]}
         </Text>
         <Text>€{item.product.price.toFixed(2)}</Text>
         <Text uppercase={true} bold={true} size={11}>
-          Color: {item.product.name.split(" - ")[1]}
+          Color: {item.product.name.split(' - ')[1]}
         </Text>
-        <Controller show={show} quantity={item.quantity} id={item.id} />
+        <Controller
+          quantity={item.quantity}
+          id={item.id}
+          requested={requested}
+        />
       </div>
     </CartItemContainer>
   )
 }
 
-const CartItems = ({ cart, products, show }) => {
+const CartItems = ({ cart, products }) => {
+  const authenticated = useSelector((state) => state.user.authenticated)
   const dispatch = useDispatch()
 
   useEffect(() => {
-    if (products.length <= 1) dispatch(getProducts())
+    if (products.length <= 1 && authenticated) {
+      dispatch(getProducts())
+    }
+
     // eslint-disable-next-line
   }, [products])
 
@@ -108,7 +121,6 @@ const CartItems = ({ cart, products, show }) => {
       return (
         <CartItem
           key={index}
-          show={show}
           item={{ ...foundItem, quantity: item.quantity }}
         />
       )
@@ -130,6 +142,7 @@ const Index = ({ show, trigger, cart, products }) => {
       })
       setTotalPrice(price)
     }
+
     // eslint-disable-next-line
   }, [cart])
 
@@ -137,7 +150,7 @@ const Index = ({ show, trigger, cart, products }) => {
     <Cart show={show}>
       <CartHead trigger={trigger} />
       <ItemsContainer>
-        <CartItems show={show} cart={cart} products={products} />
+        <CartItems cart={cart} products={products} />
       </ItemsContainer>
       <Total>
         <Text uppercase={true} bold={true} size={17}>

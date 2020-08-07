@@ -6,14 +6,14 @@ import {
   SET_CART_ITEMS,
   ADD_CART_ITEM,
   DELETE_CART_ITEM,
-} from "../types"
-import axios from "shared/utils/api"
-import store from "../index"
+} from '../types'
+import axios from 'shared/utils/api'
+import store from '../index'
 
 export const getProducts = () => (dispatch) => {
   dispatch({ type: LOADING_DATA })
   axios
-    .get("/products")
+    .get('/products')
     .then((res) =>
       dispatch({
         type: SET_PRODUCTS,
@@ -38,7 +38,7 @@ export const getProduct = (id) => (dispatch) => {
 
 export const getCartItems = () => (dispatch) => {
   axios
-    .get("/users/cart")
+    .get('/users/cart')
     .then((res) =>
       dispatch({
         type: SET_CART_ITEMS,
@@ -53,7 +53,7 @@ export const addProductToCart = (product) => (dispatch) => {
   const { cart } = store.getState().products
   const foundItem = cart.find((item) => item.productId === product.id)
   axios
-    .post("/users/cart", {
+    .post('/users/cart', {
       ...product,
       quantity: foundItem
         ? foundItem.quantity + product.quantity

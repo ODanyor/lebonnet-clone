@@ -1,5 +1,5 @@
-import styled from "styled-components"
-import { color, font } from "shared/utils/styles"
+import styled from 'styled-components'
+import { color, font } from 'shared/utils/styles'
 
 export const Cart = styled.div`
   position: fixed;
@@ -12,7 +12,7 @@ export const Cart = styled.div`
   flex-direction: column;
   background-color: ${color.white};
   transition: transform var(--transition);
-  transform: translateX(${(props) => (!props.show ? "100%" : "0")});
+  transform: translateX(${(props) => (!props.show ? '100%' : '0')});
   z-index: 1200;
 `
 export const DistanceBetween = styled.div`
