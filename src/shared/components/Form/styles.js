@@ -1,7 +1,9 @@
-import styled from "styled-components"
-import { color, font } from "shared/utils/styles"
+import styled from 'styled-components'
+import { color, font } from 'shared/utils/styles'
 
 export const FormContainer = styled.div`
+  padding: 1rem;
+  min-height: 100vh;
   background-image: url(${(props) => props.img});
   background-size: cover;
   background-repeat: no-repeat;

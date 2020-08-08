@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
+import { useHandleWindowWidth } from 'shared/hooks'
 import { NavbarComposition, LogoContainer } from './styles'
 import logo from 'shared/assets/logo.svg'
 
@@ -21,19 +22,7 @@ function Logo() {
 }
 
 const Index = (props) => {
-  const [width, setWidth] = useState(window.innerWidth)
-
-  function handleWindowWidth() {
-    setWidth(window.innerWidth)
-  }
-
-  useEffect(() => {
-    window.addEventListener('resize', handleWindowWidth)
-
-    return () => window.removeEventListener('resize', handleWindowWidth)
-  })
-
-  return width >= 900 ? (
+  return useHandleWindowWidth() >= 900 ? (
     <NavbarComposition>
       <Swiper list={swiperList} />
       <Navbar {...props} />

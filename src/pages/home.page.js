@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 
 import { Helmet } from 'react-helmet'
 import { Slider, BannerHand, BannerBaby, Banner } from 'shared/components'
 import { Banners } from 'shared/compositions'
+import { useHandleWindowWidth } from 'shared/hooks'
 
 import slide_img_1 from 'shared/assets/images/slide_img_1.jpg'
 import slide_img_2 from 'shared/assets/images/slide_img_2.jpg'
@@ -48,25 +49,13 @@ function ForMobile() {
 }
 
 function Index() {
-  const [width, setWidth] = useState(window.innerWidth)
-
-  function handleWindowWidth() {
-    setWidth(window.innerWidth)
-  }
-
-  useEffect(() => {
-    window.addEventListener('resize', handleWindowWidth)
-
-    return () => window.removeEventListener('resize', handleWindowWidth)
-  })
-
   return (
     <div>
       <Helmet>
         <title>LeBonnet(clone)</title>
       </Helmet>
 
-      {width >= 900 ? <ForPC /> : <ForMobile />}
+      {useHandleWindowWidth() >= 900 ? <ForPC /> : <ForMobile />}
     </div>
   )
 }

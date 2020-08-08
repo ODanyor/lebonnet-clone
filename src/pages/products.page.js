@@ -18,8 +18,8 @@ const sectionList = [
   { category: 'exclusives', img: exclusive },
 ]
 
-const Sections = ({ sections, products, loading }) =>
-  sections.map(({ category, img }, index) => (
+const Sections = ({ sections, products, loading }) => {
+  return sections.map(({ category, img }, index) => (
     <section key={index} id={category}>
       <Title centered={true} colored={true}>
         {category}
@@ -32,6 +32,7 @@ const Sections = ({ sections, products, loading }) =>
       />
     </section>
   ))
+}
 
 function Index() {
   const dispatch = useDispatch()

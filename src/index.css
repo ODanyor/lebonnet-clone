@@ -8,7 +8,7 @@
 :root {
   --transition: 500ms;
   --border: 1.7px solid;
-  --responsive: 900px;
+  --responsive: 1000px;
 }
 
 body {

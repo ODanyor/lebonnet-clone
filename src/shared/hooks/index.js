@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { logOut } from 'store/actions/userActions'
@@ -34,4 +34,20 @@ export const useOutsideClickHandle = (ref, event) => {
 
     // eslint-disable-next-line
   }, [event])
+}
+
+export const useHandleWindowWidth = () => {
+  const [width, setWidth] = useState(window.innerWidth)
+
+  function handleWindowWidth() {
+    setWidth(window.innerWidth)
+  }
+
+  useEffect(() => {
+    window.addEventListener('resize', handleWindowWidth)
+
+    return () => window.removeEventListener('resize', handleWindowWidth)
+  })
+
+  return width
 }

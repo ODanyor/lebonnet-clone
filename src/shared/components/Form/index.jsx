@@ -1,6 +1,7 @@
 import React from 'react'
 import { FormContainer, Form, Message } from './styles'
 import { useForm } from 'react-hook-form'
+import { useHandleWindowWidth } from 'shared/hooks'
 import { Title } from 'shared/components'
 import { useSelector } from 'react-redux'
 import FormInput from './FormInput'
@@ -42,7 +43,11 @@ const Index = (props) => {
 
 function FormTitle({ colored, formItems }) {
   return (
-    <Title centered={true} colored={!colored}>
+    <Title
+      centered={true}
+      colored={!colored}
+      size={useHandleWindowWidth() <= 500 ? 45 : 75}
+    >
       {formItems.title}
     </Title>
   )
