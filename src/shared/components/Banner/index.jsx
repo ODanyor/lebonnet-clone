@@ -12,7 +12,7 @@ function index({ banner }) {
         height='auto'
       />
       <BannerTitle>
-        <Title colored={true} centered={true}>
+        <Title colored={true} centered={true} size={55}>
           {banner.title}
         </Title>
       </BannerTitle>
