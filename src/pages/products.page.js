@@ -6,10 +6,7 @@ import { WithScrollbar } from 'shared/compositions'
 import { Products } from 'shared/containers'
 import { getProducts } from 'store/actions/productActions'
 
-import beanie from 'shared/assets/images/loaders/beanie.jpg'
-import scarve from 'shared/assets/images/loaders/scarve.jpg'
-import gloves from 'shared/assets/images/loaders/gloves.jpg'
-import exclusive from 'shared/assets/images/loaders/exclusive.jpg'
+import { beanie, scarve, gloves, exclusive } from 'shared/assets/images/loaders'
 
 const sectionList = [
   { category: 'beanies', img: beanie },

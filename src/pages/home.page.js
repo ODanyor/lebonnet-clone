@@ -1,21 +1,37 @@
 import React from 'react'
 
 import { Helmet } from 'react-helmet'
-import { Slider, BannerHand, BannerBaby, Banner } from 'shared/components'
+import {
+  Slider,
+  BannerHand,
+  BannerBaby,
+  Category,
+  Banner,
+} from 'shared/components'
 import { Banners } from 'shared/compositions'
 import { useHandleWindowWidth } from 'shared/hooks'
 
-import slide_img_1 from 'shared/assets/images/slide_img_1.jpg'
-import slide_img_2 from 'shared/assets/images/slide_img_2.jpg'
+import {
+  slide_img_1,
+  slide_img_2,
+  home_1,
+  home_2,
+  home_3,
+  home_4,
+} from 'shared/assets/images'
 
-import home_1 from 'shared/assets/images/home_1.jpg'
-import home_2 from 'shared/assets/images/home_2.jpg'
-import home_3 from 'shared/assets/images/home_3.jpg'
-import home_4 from 'shared/assets/images/home_4.jpg'
+import { beanie, scarve, gloves, exclusive } from 'shared/assets/images/loaders'
 
 const slides = [
   { img: slide_img_1, title: 'Winter is coming' },
   { img: slide_img_2, title: '100% biodegradable' },
+]
+
+const categories = [
+  { img: beanie, title: 'beanies' },
+  { img: scarve, title: 'scarves' },
+  { img: gloves, title: 'gloves' },
+  { img: exclusive, title: 'exclusives' },
 ]
 
 const banners = [
@@ -40,11 +56,36 @@ function ForPC() {
 
 function ForMobile() {
   return (
-    <div style={{ paddingBottom: '48px' }}>
+    <React.Fragment>
+      <MobileCategories />
+      <MobileBanners />
+    </React.Fragment>
+  )
+}
+
+function MobileCategories() {
+  return (
+    <section
+      style={{
+        width: '100vw',
+        display: 'flex',
+        overflowX: 'auto',
+      }}
+    >
+      {categories.map((category, index) => (
+        <Category key={index} category={category} />
+      ))}
+    </section>
+  )
+}
+
+function MobileBanners() {
+  return (
+    <section style={{ paddingBottom: '48px' }}>
       {banners.map((banner, index) => (
         <Banner key={index} banner={banner} />
       ))}
-    </div>
+    </section>
   )
 }
 
