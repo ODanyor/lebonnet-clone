@@ -3,22 +3,22 @@ import { Link, Button } from 'shared/components'
 import { Menu, MenuItemContainer } from './styles'
 import { menu, home, user, pack } from 'shared/assets/icons'
 
-const items = [
-  { img: menu },
-  { img: home, to: '/' },
-  { img: user, to: '/account' },
-  { img: pack },
-]
+export default function index({ trigger }) {
+  const items = [
+    { img: menu },
+    { img: home, to: '/' },
+    { img: user, to: '/account' },
+    { img: pack, onClick: trigger },
+  ]
 
-export default function index() {
   return (
     <Menu>
-      <MenuItems />
+      <MenuItems items={items} />
     </Menu>
   )
 }
 
-function MenuItems() {
+function MenuItems({ items }) {
   return items.map((item, index) => <MenuItem key={index} item={item} />)
 }
 
@@ -31,7 +31,7 @@ function MenuItem({ item }) {
     </MenuItemContainer>
   ) : (
     <MenuItemContainer>
-      <Button block={true} onClick={() => console.log('Clicked ...')}>
+      <Button block={true} onClick={item.onClick}>
         <img alt='menu-icon' src={item.img} width='17px' height='17px' />
       </Button>
     </MenuItemContainer>

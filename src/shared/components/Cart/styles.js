@@ -14,6 +14,12 @@ export const Cart = styled.div`
   transition: transform var(--transition);
   transform: translateX(${(props) => (!props.show ? '100%' : '0')});
   z-index: 1200;
+
+  @media screen and (max-width: 700px) {
+    & {
+      width: 100%;
+    }
+  }
 `
 export const DistanceBetween = styled.div`
   ${(props) => (props.margin ? `margin: ${props.margin}` : null)};

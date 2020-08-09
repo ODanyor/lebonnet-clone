@@ -34,7 +34,7 @@ function Index({ children }) {
           <FooterWithCopyright />
         </React.Fragment>
       ) : (
-        <Menu />
+        <Menu trigger={toggle} />
       )}
     </React.Fragment>
   )
