@@ -1,8 +1,12 @@
-import React from "react"
-import { StyledLink } from "./styles"
+import React from 'react'
+import { StyledLink } from './styles'
 
-const index = ({ to, children }) => {
-  return <StyledLink to={to}>{children}</StyledLink>
+const index = ({ to, children, ...rest }) => {
+  return (
+    <StyledLink to={to} {...rest}>
+      {children}
+    </StyledLink>
+  )
 }
 
 export default index

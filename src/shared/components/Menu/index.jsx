@@ -1,8 +1,14 @@
 import React from 'react'
+import { Link, Button } from 'shared/components'
 import { Menu, MenuItemContainer } from './styles'
 import { menu, home, user, pack } from 'shared/assets/icons'
 
-const items = [{ img: menu }, { img: home }, { img: user }, { img: pack }]
+const items = [
+  { img: menu },
+  { img: home, to: '/' },
+  { img: user, to: '/account' },
+  { img: pack },
+]
 
 export default function index() {
   return (
@@ -17,9 +23,17 @@ function MenuItems() {
 }
 
 function MenuItem({ item }) {
-  return (
+  return item.to ? (
     <MenuItemContainer>
-      <img alt='menu-icon' src={item.img} width='17px' height='17px' />
+      <Link block='true' to={item.to}>
+        <img alt='menu-icon' src={item.img} width='17px' height='17px' />
+      </Link>
+    </MenuItemContainer>
+  ) : (
+    <MenuItemContainer>
+      <Button block={true} onClick={() => console.log('Clicked ...')}>
+        <img alt='menu-icon' src={item.img} width='17px' height='17px' />
+      </Button>
     </MenuItemContainer>
   )
 }

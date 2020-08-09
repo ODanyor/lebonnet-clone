@@ -1,5 +1,5 @@
 export { default as ForNewsletter } from './ForNewsletter'
-export { default as Illustrations } from './Illustrations'
+export { default as Illustration } from './Illustration'
 export { default as Notification } from './Notification'
 export { default as Background } from './Background'
 export { default as BannerHand } from './BannerHand'
