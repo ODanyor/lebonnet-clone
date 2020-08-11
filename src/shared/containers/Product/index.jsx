@@ -1,5 +1,5 @@
 import React from 'react'
-import { Product } from './styles'
+import { Product, IllustrationsContainer } from './styles'
 import { Illustration, Details } from 'shared/components'
 
 const index = (props) => {
@@ -9,9 +9,9 @@ const index = (props) => {
 
   return (
     <Product>
-      <div>
+      <IllustrationsContainer>
         <Illustrations pictures={pictures} />
-      </div>
+      </IllustrationsContainer>
       <Details {...details} {...rest} />
     </Product>
   )

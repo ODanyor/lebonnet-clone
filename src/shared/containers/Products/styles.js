@@ -1,15 +1,17 @@
-import styled from "styled-components"
-import { color } from "shared/utils/styles"
+import styled from 'styled-components'
+import { color } from 'shared/utils/styles'
 
 export const Products = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  padding-bottom: 3rem;
 `
 
 export const Skeleton = styled.div`
   position: relative;
   margin: 15px;
+  min-width: 250px;
   width: calc(25% - 50px);
   background-repeat: no-repeat;
   overflow: hidden;
@@ -17,7 +19,7 @@ export const Skeleton = styled.div`
   display: flex;
   align-items: center;
   &::before {
-    content: "";
+    content: '';
     display: block;
     padding-top: 100%;
   }

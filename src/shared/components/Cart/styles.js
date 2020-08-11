@@ -31,14 +31,18 @@ export const DistanceBetween = styled.div`
 
 export const ItemsContainer = styled.div`
   border-top: 1px solid ${color.gray};
-  padding: 20px 50px;
+  padding: 10px;
   height: 100%;
   overflow-y: scroll;
 `
 
 export const CartItemContainer = styled.div`
   display: grid;
-  grid-template-columns: 1fr 240px;
+  grid-template-columns: 1fr 1fr;
+`
+
+export const ImgContainer = styled.div`
+  min-width: 150px;
 `
 
 export const ControllerContainer = styled.div`

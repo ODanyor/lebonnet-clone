@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Helmet } from 'react-helmet'
+import { useHandleWindowWidth, useWindowScrollToTop } from 'shared/hooks'
 import { Title } from 'shared/components'
 import { WithScrollbar } from 'shared/compositions'
 import { Products } from 'shared/containers'
@@ -16,9 +17,11 @@ const sectionList = [
 ]
 
 const Sections = ({ sections, products, loading }) => {
+  const responsiveTitle = useHandleWindowWidth() < 500 ? 45 : null
+
   return sections.map(({ category, img }, index) => (
     <section key={index} id={category}>
-      <Title centered={true} colored={true}>
+      <Title centered={true} colored={true} size={responsiveTitle}>
         {category}
       </Title>
       <Products
@@ -43,6 +46,8 @@ function Index() {
 
     // eslint-disable-next-line
   }, [])
+
+  useWindowScrollToTop()
 
   return (
     <WithScrollbar>

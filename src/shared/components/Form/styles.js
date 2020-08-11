@@ -3,7 +3,7 @@ import { color, font } from 'shared/utils/styles'
 
 export const FormContainer = styled.div`
   padding: 1rem;
-  min-height: 100vh;
+  min-height: 700px;
   background-image: url(${(props) => props.img});
   background-size: cover;
   background-repeat: no-repeat;

@@ -18,22 +18,13 @@ export const useIsAuthenticated = () => {
 
       if (decodedToken.exp * 1000 < Date.now()) dispatch(logOut(history))
       else {
-        dispatch(getCartItems())
         dispatch({ type: 'SET_AUTHENTICATED' })
+        dispatch(getCartItems())
       }
     }
 
     //eslint-disable-next-line
   }, [history])
-}
-
-export const useOutsideClickHandle = (ref, event) => {
-  useEffect(() => {
-    if (ref.current.contains(event.target)) return false
-    return true
-
-    // eslint-disable-next-line
-  }, [event])
 }
 
 export const useHandleWindowWidth = () => {
@@ -50,4 +41,10 @@ export const useHandleWindowWidth = () => {
   })
 
   return width
+}
+
+export const useWindowScrollToTop = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
 }

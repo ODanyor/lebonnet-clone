@@ -13,6 +13,7 @@ import {
   DistanceBetween,
   ItemsContainer,
   CartItemContainer,
+  ImgContainer,
   ControllerContainer,
   SquareButton,
   Total,
@@ -75,7 +76,9 @@ const CartItem = ({ item }) => {
 
   return (
     <CartItemContainer>
-      <img alt='img' src={item.product.photo_1} width='100%' height='auto' />
+      <ImgContainer>
+        <img alt='img' src={item.product.photo_1} width='100%' height='auto' />
+      </ImgContainer>
       <div>
         <Button
           onClick={() => dispatch(deleteProductFromCart(item.id))}

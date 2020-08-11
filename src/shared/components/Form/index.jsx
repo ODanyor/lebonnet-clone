@@ -46,7 +46,7 @@ function FormTitle({ colored, formItems }) {
     <Title
       centered={true}
       colored={!colored}
-      size={useHandleWindowWidth() <= 500 ? 45 : 75}
+      size={useHandleWindowWidth() <= 500 ? 45 : null}
     >
       {formItems.title}
     </Title>

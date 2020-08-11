@@ -1,8 +1,7 @@
-import styled from "styled-components"
-import { font } from "shared/utils/styles"
+import styled from 'styled-components'
+import { color, font } from 'shared/utils/styles'
 
 export const Scrollbar = styled.ul`
-  /* margin-top: 15rem; */
   padding: 5px;
   position: sticky;
   top: 27em;
@@ -12,7 +11,18 @@ export const Scrollbar = styled.ul`
   flex-direction: row-reverse;
   justify-content: flex-end;
   text-transform: uppercase;
+  z-index: 900;
   ${font.size(13)};
+
+  @media screen and (max-width: 900px) {
+    & {
+      top: 0;
+      transform: rotate(0deg);
+      background-color: ${color.white};
+      padding: 15px;
+      border-bottom: 1px solid ${color.lightGray};
+    }
+  }
 
   li {
     margin-right: 10px;

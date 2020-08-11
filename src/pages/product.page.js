@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from "react"
-import { useSelector, useDispatch } from "react-redux"
-import { useParams } from "react-router-dom"
-import { Helmet } from "react-helmet"
-import { Product } from "shared/containers"
-import { getProduct, addProductToCart } from "store/actions/productActions"
+import React, { useEffect, useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { useParams } from 'react-router-dom'
+import { Helmet } from 'react-helmet'
+import { Spinner } from 'shared/components'
+import { Product } from 'shared/containers'
+import { useWindowScrollToTop } from 'shared/hooks'
+import { getProduct, addProductToCart } from 'store/actions/productActions'
 
 function Index() {
   const { id } = useParams()
@@ -19,6 +21,8 @@ function Index() {
     // eslint-disable-next-line
   }, [foundProduct])
 
+  useWindowScrollToTop()
+
   return product ? (
     <React.Fragment>
       <Helmet>
@@ -28,7 +32,7 @@ function Index() {
       <Product product={product} addToCart={addProductToCart} />
     </React.Fragment>
   ) : (
-    <h1>Skeleton ...</h1>
+    <Spinner />
   )
 }
 

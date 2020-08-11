@@ -1,20 +1,24 @@
-import styled from "styled-components"
-import { color, font } from "shared/utils/styles"
+import styled from 'styled-components'
+import { color, font } from 'shared/utils/styles'
 
-export const Product = styled.div`
+export const ProductMain = styled.div`
   position: relative;
   margin: 15px;
+  min-width: 250px;
   width: calc(25% - 50px);
+  overflow: hidden;
+`
+
+export const Product = styled.div`
   background-color: ${color.lightGray};
   background-image: url(${(props) => props.img});
   background-size: cover;
   background-repeat: no-repeat;
-  overflow: hidden;
 
   display: flex;
   align-items: center;
   &::before {
-    content: "";
+    content: '';
     display: block;
     padding-top: 100%;
   }

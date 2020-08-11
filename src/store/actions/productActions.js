@@ -39,12 +39,13 @@ export const getProduct = (id) => (dispatch) => {
 export const getCartItems = () => (dispatch) => {
   axios
     .get('/users/cart')
-    .then((res) =>
+    .then((res) => {
+      dispatch(getProducts())
       dispatch({
         type: SET_CART_ITEMS,
         payload: res.data,
       })
-    )
+    })
     .catch((err) => console.log(err.code))
 }
 

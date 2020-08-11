@@ -1,8 +1,9 @@
-import styled from "styled-components"
-import { color, font } from "shared/utils/styles"
+import styled from 'styled-components'
+import { color, font } from 'shared/utils/styles'
 
 export const Details = styled.div`
   padding: 0 50px;
+  margin-bottom: 46px;
   position: -webkit-sticky; /* Safari */
   position: sticky;
   top: 113px;

@@ -27,16 +27,19 @@ function Index({ children }) {
         products={products}
       />
       {children}
-
-      {useHandleWindowWidth() >= 900 ? (
-        <React.Fragment>
-          <ForNewsletter />
-          <FooterWithCopyright />
-        </React.Fragment>
-      ) : (
-        <Menu trigger={toggle} />
-      )}
+      <ResponsivePart toggle={toggle} />
     </React.Fragment>
+  )
+}
+
+function ResponsivePart({ toggle }) {
+  return useHandleWindowWidth() >= 900 ? (
+    <React.Fragment>
+      <ForNewsletter />
+      <FooterWithCopyright />
+    </React.Fragment>
+  ) : (
+    <Menu trigger={toggle} />
   )
 }
 

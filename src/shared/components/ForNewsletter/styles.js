@@ -1,7 +1,7 @@
-import styled from "styled-components"
-import { color, font } from "shared/utils/styles"
+import styled from 'styled-components'
+import { color, font } from 'shared/utils/styles'
 
-export const ForNewsletter = styled.div`
+export const ForNewsletter = styled.form`
   padding: 4em 0;
   width: 100%;
   display: flex;

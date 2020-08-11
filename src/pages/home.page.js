@@ -1,5 +1,4 @@
 import React from 'react'
-
 import { Helmet } from 'react-helmet'
 import {
   Slider,
@@ -9,7 +8,7 @@ import {
   Banner,
 } from 'shared/components'
 import { Banners } from 'shared/compositions'
-import { useHandleWindowWidth } from 'shared/hooks'
+import { useHandleWindowWidth, useWindowScrollToTop } from 'shared/hooks'
 
 import {
   slide_img_1,
@@ -90,6 +89,8 @@ function MobileBanners() {
 }
 
 function Index() {
+  useWindowScrollToTop()
+
   return (
     <div>
       <Helmet>

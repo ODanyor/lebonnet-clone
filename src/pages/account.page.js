@@ -6,6 +6,7 @@ import { Banners } from 'shared/compositions'
 import { Box } from 'shared/containers'
 import { Helmet } from 'react-helmet'
 import { Form, Title, Text } from 'shared/components'
+import { useWindowScrollToTop } from 'shared/hooks'
 import { credentialValidation } from 'shared/utils/validation'
 
 import boy from 'shared/assets/images/boy.jpg'
@@ -17,7 +18,7 @@ const forms = {
       {
         name: 'email',
         placeholder: 'Email',
-        type: 'text',
+        type: 'email',
       },
       {
         name: 'password',
@@ -32,7 +33,7 @@ const forms = {
       {
         name: 'email',
         placeholder: 'Email',
-        type: 'text',
+        type: 'email',
       },
       {
         name: 'password',
@@ -48,7 +49,9 @@ const forms = {
   },
 }
 
-function index() {
+function Index() {
+  useWindowScrollToTop()
+
   return (
     <React.Fragment>
       <AccountHeader />
@@ -133,4 +136,4 @@ function AccountContent() {
   )
 }
 
-export default index
+export default Index

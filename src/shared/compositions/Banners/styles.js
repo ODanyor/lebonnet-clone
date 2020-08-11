@@ -1,9 +1,8 @@
 import styled from 'styled-components'
 
 export const Banners = styled.div`
-  display: block;
   width: 100%;
-  min-height: 100vh;
+  min-height: 1000px;
 
   display: grid;
   grid-template-columns: 1fr 1fr;
