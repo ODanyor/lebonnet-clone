@@ -12,19 +12,21 @@ function Index({ children }) {
   const [showcart, setShowcart] = useState(false)
   const toggle = () => setShowcart((prevState) => !prevState)
 
-  const store = useSelector((state) => state.products)
-  const cart = store.cart
-  const products = store.products
+  const store = useSelector((state) => state)
 
   return (
     <React.Fragment>
       <Notification />
-      <NavbarComposition trigger={toggle} cartLength={cart.length} />
+      <NavbarComposition
+        trigger={toggle}
+        cartLength={store.products.cart.length}
+        authenticated={store.user.authenticated}
+      />
       <CartWithBackground
         trigger={toggle}
         show={showcart}
-        cart={cart}
-        products={products}
+        cart={store.products.cart}
+        products={store.products}
       />
       {children}
       <ResponsivePart toggle={toggle} />

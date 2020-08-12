@@ -1,5 +1,8 @@
 import React, { useRef } from 'react'
+import { useHistory } from 'react-router-dom'
 import { Navbar, NavbarLinks, NavbarLink, NavbarLinkUnderline } from './styles'
+import { useDispatch } from 'react-redux'
+import { logOut } from 'store/actions/userActions'
 
 // Images
 import logo from 'shared/assets/logo.svg'
@@ -37,7 +40,25 @@ const LinkItems = ({ links }) => {
   return links.map((link, index) => <LinkItem key={index} link={link} />)
 }
 
-const index = ({ trigger, cartLength }) => {
+function AuthButtons({ authenticated, trigger, cartLength }) {
+  const history = useHistory()
+  const dispatch = useDispatch()
+
+  return (
+    authenticated && (
+      <React.Fragment>
+        <Button onClick={trigger}>
+          <NavbarLink>Cart({cartLength})</NavbarLink>
+        </Button>
+        <Button onClick={() => dispatch(logOut(history))}>
+          <NavbarLink>Log out</NavbarLink>
+        </Button>
+      </React.Fragment>
+    )
+  )
+}
+
+const index = ({ trigger, cartLength, authenticated }) => {
   return (
     <Navbar>
       <NavbarLinks>
@@ -50,9 +71,11 @@ const index = ({ trigger, cartLength }) => {
       </Link>
       <NavbarLinks>
         <LinkItems links={rightLinks} />
-        <Button onClick={trigger}>
-          <NavbarLink>Cart({cartLength})</NavbarLink>
-        </Button>
+        <AuthButtons
+          trigger={trigger}
+          cartLength={cartLength}
+          authenticated={authenticated}
+        />
       </NavbarLinks>
     </Navbar>
   )

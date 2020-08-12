@@ -115,20 +115,19 @@ const CartItems = ({ cart, products }) => {
     // eslint-disable-next-line
   }, [products])
 
-  return (
-    products.length > 1 &&
-    cart.map((item, index) => {
-      const foundItem = products.find(
-        (product) => product.id === item.productId
-      )
-      return (
-        <CartItem
-          key={index}
-          item={{ ...foundItem, quantity: item.quantity }}
-        />
-      )
-    })
-  )
+  return products.length > 1
+    ? cart.map((item, index) => {
+        const foundItem = products.find(
+          (product) => product.id === item.productId
+        )
+        return (
+          <CartItem
+            key={index}
+            item={{ ...foundItem, quantity: item.quantity }}
+          />
+        )
+      })
+    : null
 }
 
 const Index = ({ show, trigger, cart, products }) => {

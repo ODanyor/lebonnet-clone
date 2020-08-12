@@ -3,11 +3,16 @@ import { color, font } from 'shared/utils/styles'
 
 export const Details = styled.div`
   padding: 0 50px;
-  margin-bottom: 46px;
   position: -webkit-sticky; /* Safari */
   position: sticky;
   top: 113px;
   max-height: 50vh;
+
+  @media screen and (max-width: 1000px) {
+    & {
+      margin-bottom: 46px;
+    }
+  }
 `
 
 export const Buttons = styled.div`
