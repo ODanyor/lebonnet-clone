@@ -13,13 +13,16 @@ It's very good showcase of how easy is that to make a clone of any high function
 - Authentication/Authorization
 - Cart
 
+## Stack 🔨
+
+- React(hooks based components)
+- Redux(thunk)
+- styled-components(javascript/scss library)
+- Firebase(manual API + firestore)
+
 ## Todo - (small fixes)
 
 - [x] Clearify the redux part
-- [x] Cart items
-- [x] Total price
 - [x] Fix the cart update item feature
 - [x] Make the app responsive
 - [ ] Code review from and make changes if needed
-- [x] Replace hanleWindowWidth listeners with a useHandleWindowWidth hook
-- [ ] Fix banner style
