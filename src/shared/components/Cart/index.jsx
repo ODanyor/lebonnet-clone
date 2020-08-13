@@ -81,6 +81,7 @@ const CartItem = ({ item }) => {
       </ImgContainer>
       <div>
         <Button
+          right={true}
           onClick={() => dispatch(deleteProductFromCart(item.id))}
           disabled={requested}
         >
@@ -115,19 +116,20 @@ const CartItems = ({ cart, products }) => {
     // eslint-disable-next-line
   }, [products])
 
-  return products.length > 1
-    ? cart.map((item, index) => {
-        const foundItem = products.find(
-          (product) => product.id === item.productId
-        )
-        return (
-          <CartItem
-            key={index}
-            item={{ ...foundItem, quantity: item.quantity }}
-          />
-        )
-      })
-    : null
+  return (
+    products.length > 1 &&
+    cart.map((item, index) => {
+      const foundItem = products.find(
+        (product) => product.id === item.productId
+      )
+      return (
+        <CartItem
+          key={index}
+          item={{ ...foundItem, quantity: item.quantity }}
+        />
+      )
+    })
+  )
 }
 
 const Index = ({ show, trigger, cart, products }) => {

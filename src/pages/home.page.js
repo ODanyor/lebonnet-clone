@@ -6,6 +6,7 @@ import {
   BannerBaby,
   Category,
   Banner,
+  Link,
 } from 'shared/components'
 import { Banners } from 'shared/compositions'
 import { useHandleWindowWidth, useWindowScrollToTop } from 'shared/hooks'
@@ -27,10 +28,10 @@ const slides = [
 ]
 
 const categories = [
-  { img: beanie, title: 'beanies' },
-  { img: scarve, title: 'scarves' },
-  { img: gloves, title: 'gloves' },
-  { img: exclusive, title: 'exclusives' },
+  { img: beanie, title: 'beanies', to: '/products#beanies' },
+  { img: scarve, title: 'scarves', to: '/products#scarves' },
+  { img: gloves, title: 'gloves', to: '/products#gloves' },
+  { img: exclusive, title: 'exclusives', to: '/products#exclusives' },
 ]
 
 const banners = [
@@ -72,7 +73,9 @@ function MobileCategories() {
       }}
     >
       {categories.map((category, index) => (
-        <Category key={index} category={category} />
+        <Link key={index} to={category.to}>
+          <Category category={category} />
+        </Link>
       ))}
     </section>
   )

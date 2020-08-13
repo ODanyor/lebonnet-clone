@@ -6,7 +6,7 @@ export const Details = styled.div`
   position: -webkit-sticky; /* Safari */
   position: sticky;
   top: 113px;
-  max-height: 50vh;
+  max-height: 500px;
 
   @media screen and (max-width: 1000px) {
     & {

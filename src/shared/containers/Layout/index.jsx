@@ -26,7 +26,7 @@ function Index({ children }) {
         trigger={toggle}
         show={showcart}
         cart={store.products.cart}
-        products={store.products}
+        products={store.products.products}
       />
       {children}
       <ResponsivePart toggle={toggle} />

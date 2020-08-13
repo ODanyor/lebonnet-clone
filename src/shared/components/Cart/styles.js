@@ -37,8 +37,10 @@ export const ItemsContainer = styled.div`
 `
 
 export const CartItemContainer = styled.div`
+  position: relative;
   display: grid;
   grid-template-columns: 1fr 1fr;
+  margin-bottom: 2rem;
 `
 
 export const ImgContainer = styled.div`

@@ -4,7 +4,7 @@ import { NavbarComposition, LogoContainer } from './styles'
 import logo from 'shared/assets/logo.svg'
 
 // Components
-import { Swiper, Navbar } from 'shared/components'
+import { Swiper, Navbar, Link } from 'shared/components'
 
 const swiperList = [
   { content: 'Free shipping netherlands!' },
@@ -16,7 +16,9 @@ const swiperList = [
 function Logo() {
   return (
     <LogoContainer>
-      <img alt='logo' src={logo} width='120px' height='auto' />
+      <Link to='/'>
+        <img alt='logo' src={logo} width='120px' height='auto' />
+      </Link>
     </LogoContainer>
   )
 }
